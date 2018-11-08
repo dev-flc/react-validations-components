@@ -1,0 +1,55 @@
+{
+  "name": "react-validations-components",
+  "version": "1.0.0",
+  "description": "validation engine",
+  "main": "dist/index.js",
+  "scripts": {
+    "development": "webpack-dev-server --progress  --config webpack.dev.js",
+    "build": "babel src -d dist --copy-files",
+    "clean": "rm -r dist && mkdir dist",
+    "prodWindows": "npm run build",
+    "prodLinux": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:fercho0/react-validations-components.gitt"
+  },
+  "bugs": {
+    "url": "https://github.com/fercho0/react-validations-components"
+  },
+  "keywords": [
+    "javascript",
+    "react.js",
+    "react",
+    "Jsx",
+    "Ecmascript"
+  ],
+  "author": "Fernando Lucena Calixto <fer.lc.developer@gmail.com> (forevertucode.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/fercho0/react-validations-components#readme",
+  "dependencies": {
+    "dotenv-webpack": "^1.5.7",
+    "react": "^16.3.2",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "clean-webpack-plugin": "0.1.19",
+    "css-loader": "0.28.11",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "7.0.1",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "1.2.5",
+    "webpack": "4.8.1",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-server": "3.1.4",
+    "webpack-merge": "4.1.2"
+  }
+}
