@@ -19,68 +19,70 @@ var isInt = function isInt(num) {
 var isFloa = function isFloa(num) {
     return Number(num) === num && num % 1 !== 0;
 };
+
 /* Validation Text */
 var textValidate = exports.textValidate = function textValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = { status: false, error: "El valor de \"Value\", no es de tipo string." };
+    var result = { status: false, error: "El valor de \"Value\", no es de tipo string.", varError: varError, focus: focus };
     if (isString(value)) {
-        result = RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: "El dato " + name + " no es v\xE1lido, ingresa solo letras.", varError: varError, focus: focus };
+        result = RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo letras.", varError: varError, focus: focus };
     }
     return result;
 };
+
 /* Validation Number */
 var numValidate = exports.numValidate = function numValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = { status: false, error: "El valor de \"Value\", no es de tipo number." };
+    var result = { status: false, error: "El valor de \"Value\", no es de tipo number.", varError: varError, focus: focus };
     if (isInt(value) || isFloa(value)) {
-        result = RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + name + " no es v\xE1lido, ingresa solo n\xFAmeros.", varError: varError, focus: focus };
+        result = RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo n\xFAmeros.", varError: varError, focus: focus };
     }
     return result;
 };
 /* Validation Text and Number */
 var textNumberValidate = exports.textNumberValidate = function textNumberValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings." };
+    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings.", varError: varError, focus: focus };
     if (isString(value)) {
-        result = RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + name + " no es v\xE1lido, ingresa solo letras y n\xFAmeros.", varError: varError, focus: focus };
+        result = RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo letras y n\xFAmeros.", varError: varError, focus: focus };
     }
     return result;
 };
 /* Validate RFC */
 var rfcValidate = exports.rfcValidate = function rfcValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings." };
+    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings.", varError: varError, focus: focus };
     if (isString(value)) {
-        result = RegExp(_expressions.RFC).test(value) ? { status: true } : { status: false, error: "El dato " + name + " no es v\xE1lido", varError: varError, focus: focus };
+        result = RegExp(_expressions.RFC).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
     }
     return result;
 };
 /* Validate Email */
 var emailValidate = exports.emailValidate = function emailValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings." };
+    var result = { status: false, error: "El valor de \"Value\", no es de tipo strings.", varError: varError, focus: focus };
     if (isString(value)) {
-        result = RegExp(_expressions.EMAIL).test(value) ? { status: true } : { status: false, error: "El dato " + name + " no es v\xE1lido", varError: varError, focus: focus };
+        result = RegExp(_expressions.EMAIL).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
     }
     return result;
 };
@@ -98,13 +100,13 @@ var commonValidate = exports.commonValidate = function commonValidate() {
 /* Validation Data Required */
 var requiredData = exports.requiredData = function requiredData() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
     var result = { status: true };
     if (value == null || value == "" || value == undefined) {
-        result = { status: false, error: "El dato " + name + " es requerido.", varError: varError, focus: focus };
+        result = { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
     }
     return result;
 };
@@ -112,7 +114,7 @@ var requiredData = exports.requiredData = function requiredData() {
 
 var comboValidate = exports.comboValidate = function comboValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
@@ -120,14 +122,14 @@ var comboValidate = exports.comboValidate = function comboValidate() {
     if (value != null && value !== -1 && value !== "-1" && value !== "" && value !== undefined) {
         result = { status: true };
     } else {
-        result = { status: false, error: "El dato " + name + " es requerido.", varError: varError, focus: focus };
+        result = { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
     }
     return result;
 };
 /* Validation Redio */
 var radioButtonValidate = exports.radioButtonValidate = function radioButtonValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
@@ -140,21 +142,21 @@ var radioButtonValidate = exports.radioButtonValidate = function radioButtonVali
 /* Validation Required data number and text */
 var requiredDataTextNumberValidate = exports.requiredDataTextNumberValidate = function requiredDataTextNumberValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "name";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "title";
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "varError";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "focus";
 
-    var result = requiredData(value, name, varError);
+    var result = requiredData(value, title, varError);
     if (result.status) {
-        result = textNumberValidate(value, name, varError);
+        result = textNumberValidate(value, title, varError);
         if (result.status === false) {
             {
-                result.error = "El dato " + name + " no es v\xE1lido, ingresa solo letras y n\xFAmeros.", varError;
+                result.error = "El dato " + title + " no es v\xE1lido, ingresa solo letras y n\xFAmeros.", varError;
             };
         }
     } else {
         {
-            result.error = "El dato " + name + " es requerido.", varError, focus;
+            result.error = "El dato " + title + " es requerido.", varError, focus;
         };
     }
     return result;

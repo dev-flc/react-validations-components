@@ -30,7 +30,7 @@ var singleValidation = exports.singleValidation = function singleValidation(data
             for (var _iterator = type[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                 var types = _step.value;
 
-                var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, name, varError, expRegular, message, focus);
+                var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, title, varError, expRegular, message, focus);
                 if (!resultValidation.status) {
                     return resultValidation;
                 }
@@ -50,7 +50,7 @@ var singleValidation = exports.singleValidation = function singleValidation(data
             }
         }
     } else {
-        var _resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, name, varError, expRegular, message, focus);
+        var _resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, title, varError, expRegular, message, focus);
         if (!_resultValidation.status) {
             return _resultValidation;
         }
@@ -83,9 +83,7 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                     message = newData.message,
                     focus = newData.focus;
 
-
                 title = title.toLowerCase();
-
                 if (Array.isArray(type)) {
                     var _iteratorNormalCompletion3 = true;
                     var _didIteratorError3 = false;
@@ -95,7 +93,8 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                         for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                             var types = _step3.value;
 
-                            var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, name, varError, expRegular, message, focus);
+
+                            var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, title, varError, expRegular, message, focus);
                             if (!resultValidation.status) {
                                 return resultValidation;
                             }
@@ -115,7 +114,7 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                         }
                     }
                 } else {
-                    var _resultValidation2 = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, name, varError, expRegular, message, focus);
+                    var _resultValidation2 = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, title, varError, expRegular, message, focus);
                     if (!_resultValidation2.status) {
                         return _resultValidation2;
                     }

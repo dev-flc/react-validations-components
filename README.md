@@ -53,6 +53,8 @@ To use, import the different functions exposed.
 | varError  | variable error name                |
 | focus     | component identifier               |
 
+
+
 ```js
 import {
     textValidate, 
@@ -119,6 +121,8 @@ To use the advanced functions, import the different functions exposed.
 | title     | name to show in the error message  | String                           |
 | varError  | variable error name                | String                           |
 | focus     | component identifier               | String                           |
+
+
 
 ```js
 import {

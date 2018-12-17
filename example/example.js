@@ -9,10 +9,8 @@ class Example extends Component {
 
     componentWillMount() {
         let DATA = [
-            { type : "N", value : 55, title : "fer" , varError : "fer" },
-            { type : [ "R", "T" ], value : "fer", title : "fer" , varError : "fer" }
+            { type : [ "R","T" ], value : 'example', title : "example" , varError : "fer", focus: "errorrorooror" }
         ];
-        console.log("TEXT >>> ", textValidate( "fer" ) )
         console.log("NUM >>> ", numValidate( 1 ) )
         console.log("TEXT_NUM >>> ", textNumberValidate( "sdsd77" ) )
         console.log("RFC >>> ", rfcValidate( "LUCF920804LP8" ) )
