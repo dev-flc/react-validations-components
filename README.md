@@ -53,23 +53,24 @@ To use, import the different functions exposed.
 | varError  | variable error name                |
 | focus     | component identifier               |
 
+----------------------------------------------------------------------
 
 
 ```js
 import {
-    textValidate, 
-    numValidate, 
+    textValidate,
+    numValidate,
     textNumberValidate,
-    rfcValidate, 
+    rfcValidate,
     emailValidate,
-    requiredData, 
-    comboValidate, 
+    requiredData,
+    comboValidate,
     radioButtonValidate
 } from 'react-validations-components'
 
 /* COMPLETE EXAMPLE */
 
-// Parameters 
+// Parameters
 let value    = "VALIDATION TYPE TEXT";
 let name     = "NAME";
 let varError = "errorText";
@@ -116,7 +117,7 @@ To use the advanced functions, import the different functions exposed.
 
 |  name     | Description                        | Type Data                        |
 | ----------|------------------------------------|----------------------------------|
-| type      | type of validation                 | String, Array                    | 
+| type      | type of validation                 | String, Array                    |
 | value     | data value                         | Number, Bolean, String, Floating |
 | title     | name to show in the error message  | String                           |
 | varError  | variable error name                | String                           |
@@ -144,7 +145,7 @@ console.log( singleValidation( { type : [ "R", "T" ], value : "value", title : "
 // Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
 
 
-        
+
 console.log( singleValidation( { type : "T", value : "value", title : "title" , varError : "varError", focus : "focus" } ) )
 // Result successful  = { status : true }
 

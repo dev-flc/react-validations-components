@@ -7,6 +7,13 @@ exports.multiValidation = exports.singleValidation = undefined;
 
 var _switchValidations = require('./switchValidations.js');
 
+var isString = function isString(str) {
+    return Object.prototype.toString.call(str) === '[object String]';
+};
+var isArray = function isArray(data) {
+    return Array.isArray(data);
+};
+
 var singleValidation = exports.singleValidation = function singleValidation(data) {
     var value = data.value,
         type = data.type,
@@ -17,22 +24,26 @@ var singleValidation = exports.singleValidation = function singleValidation(data
         focus = data.focus;
 
 
-    title = title.toLowerCase();
+    var result = { status: false, error: "El valor de type no es un array o un string", type: type };
 
-    var result = { status: true };
-
-    if (Array.isArray(type)) {
+    if (isArray(type)) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
 
         try {
-            for (var _iterator = type[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var types = _step.value;
 
-                var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, title, varError, expRegular, message, focus);
-                if (!resultValidation.status) {
-                    return resultValidation;
+            for (var _iterator = type[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var newType = _step.value;
+
+
+                var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
+
+                if (resultMulty.status === false) {
+                    result = resultMulty;
+                    break;
+                } else {
+                    result = resultMulty;
                 }
             }
         } catch (err) {
@@ -49,11 +60,8 @@ var singleValidation = exports.singleValidation = function singleValidation(data
                 }
             }
         }
-    } else {
-        var _resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, title, varError, expRegular, message, focus);
-        if (!_resultValidation.status) {
-            return _resultValidation;
-        }
+    } else if (isString(type)) {
+        result = (0, _switchValidations.SWITCH_VALIDATIONS)(data);
     }
 
     return result;
@@ -83,20 +91,25 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                     message = newData.message,
                     focus = newData.focus;
 
-                title = title.toLowerCase();
-                if (Array.isArray(type)) {
+
+                if (isArray(type)) {
                     var _iteratorNormalCompletion3 = true;
                     var _didIteratorError3 = false;
                     var _iteratorError3 = undefined;
 
                     try {
+
                         for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                            var types = _step3.value;
+                            var newType = _step3.value;
 
 
-                            var resultValidation = (0, _switchValidations.SWITCH_VALIDATIONS)(value, types, title, varError, expRegular, message, focus);
-                            if (!resultValidation.status) {
-                                return resultValidation;
+                            var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
+
+                            if (resultMulty.status === false) {
+                                newResult = resultMulty;
+                                break;
+                            } else {
+                                newResult = resultMulty;
                             }
                         }
                     } catch (err) {
@@ -113,11 +126,10 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                             }
                         }
                     }
+                } else if (isString(type)) {
+                    newResult = (0, _switchValidations.SWITCH_VALIDATIONS)(newData);
                 } else {
-                    var _resultValidation2 = (0, _switchValidations.SWITCH_VALIDATIONS)(value, type, title, varError, expRegular, message, focus);
-                    if (!_resultValidation2.status) {
-                        return _resultValidation2;
-                    }
+                    newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
                 }
             }
 

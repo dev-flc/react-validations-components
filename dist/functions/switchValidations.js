@@ -7,53 +7,63 @@ exports.SWITCH_VALIDATIONS = undefined;
 
 var _functions = require("./functions.js");
 
-var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATIONS(value, type, title, varError, expRegular, message, focus) {
+var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATIONS(data) {
+    var value = data.value,
+        type = data.type,
+        title = data.title,
+        varError = data.varError,
+        expRegular = data.expRegular,
+        message = data.message,
+        focus = data.focus;
 
-    var newResult = { status: false, error: "error" };
+
+    if (type !== "RFC") {
+        title = title.toLowerCase();
+    }
+
+    var result = { status: false, error: "error" };
 
     switch (type) {
+
+        case "R":
+            result = (0, _functions.requiredData)(value, title, varError, focus);
+            break;
+
         case "T":
-            newResult = (0, _functions.textValidate)(value, title, varError, focus);
+            result = (0, _functions.textValidate)(value, title, varError, focus);
             break;
 
         case "N":
-            newResult = (0, _functions.numValidate)(value, title, varError, focus);
+            result = (0, _functions.numValidate)(value, title, varError, focus);
             break;
 
         case "TN":
-            newResult = (0, _functions.textNumberValidate)(value, title, varError, focus);
-            break;
-
-        case "R":
-            newResult = (0, _functions.requiredData)(value, title, varError, focus);
+            result = (0, _functions.textNumberValidate)(value, title, varError, focus);
             break;
 
         case "RFC":
-            newResult = (0, _functions.rfcValidate)(value, title, varError, focus);
+            result = (0, _functions.rfcValidate)(value, title, varError, focus);
             break;
 
         case "EMAIL":
-            newResult = (0, _functions.emailValidate)(value, title, varError, focus);
+            result = (0, _functions.emailValidate)(value, title, varError, focus);
             break;
 
         case "COMMON":
-            newResult = (0, _functions.commonValidate)(value, expRegular, varError, message, focus);
+            result = (0, _functions.commonValidate)(value, expRegular, varError, message, focus);
             break;
 
         case "C":
-            newResult = (0, _functions.comboValidate)(value, title, varError, focus);
+            result = (0, _functions.comboValidate)(value, title, varError, focus);
             break;
 
         case "RB":
-            newResult = (0, _functions.radioButtonValidate)(value, title, varError, focus);
-            break;
-
-        case "RTN":
-            newResult = (0, _functions.requiredDataTextNumberValidate)(value, title, varError, focus);
+            result = (0, _functions.radioButtonValidate)(value, title, varError, focus);
             break;
 
         default:
+            console.log("El tipo de validación no existe :(", type);
             break;
     }
-    return newResult;
+    return result;
 };

@@ -4,23 +4,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _validationOneForOne = require('./functions/validationOneForOne.js');
-
-Object.defineProperty(exports, 'singleValidation', {
-    enumerable: true,
-    get: function get() {
-        return _validationOneForOne.singleValidation;
-    }
-});
-Object.defineProperty(exports, 'multiValidation', {
-    enumerable: true,
-    get: function get() {
-        return _validationOneForOne.multiValidation;
-    }
-});
-
 var _functions = require('./functions/functions.js');
 
+Object.defineProperty(exports, 'requiredData', {
+    enumerable: true,
+    get: function get() {
+        return _functions.requiredData;
+    }
+});
 Object.defineProperty(exports, 'textValidate', {
     enumerable: true,
     get: function get() {
@@ -57,12 +48,6 @@ Object.defineProperty(exports, 'commonValidate', {
         return _functions.commonValidate;
     }
 });
-Object.defineProperty(exports, 'requiredData', {
-    enumerable: true,
-    get: function get() {
-        return _functions.requiredData;
-    }
-});
 Object.defineProperty(exports, 'comboValidate', {
     enumerable: true,
     get: function get() {
@@ -75,9 +60,18 @@ Object.defineProperty(exports, 'radioButtonValidate', {
         return _functions.radioButtonValidate;
     }
 });
-Object.defineProperty(exports, 'requiredDataTextNumberValidate', {
+
+var _validationOneForOne = require('./functions/validationOneForOne.js');
+
+Object.defineProperty(exports, 'singleValidation', {
     enumerable: true,
     get: function get() {
-        return _functions.requiredDataTextNumberValidate;
+        return _validationOneForOne.singleValidation;
+    }
+});
+Object.defineProperty(exports, 'multiValidation', {
+    enumerable: true,
+    get: function get() {
+        return _validationOneForOne.multiValidation;
     }
 });
