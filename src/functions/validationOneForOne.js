@@ -39,32 +39,26 @@ export let multiValidation = data => {
 
     for ( let newData of data ) {
 
-        let newResult = { status : true };
+        let { value, type, title, varError, expRegular, message, focus } = newData;
 
-        if( newData.visible === true ||  newData.visible === undefined ){
+        let newResult = { status : false, error : "El valor de type no es un array o un string", type }
 
-            let { value, type, title, varError, expRegular, message, focus } = newData;
+        if ( isArray( type ) ) {
 
-            if ( isArray( type ) ) {
+            for( let newType of type ) {
 
-                for( let newType of type ) {
+                let resultMulty = SWITCH_VALIDATIONS( { value, type : newType, title, varError, expRegular, message, focus } );
 
-                    let resultMulty = SWITCH_VALIDATIONS( { value, type : newType, title, varError, expRegular, message, focus } );
-
-                    if ( resultMulty.status === false ) {
-                        newResult = resultMulty;
-                        break;
-                    }
-
-                    else { newResult = resultMulty }
+                if ( resultMulty.status === false ) {
+                    newResult = resultMulty;
+                    break;
                 }
+
+                else { newResult = resultMulty }
             }
-
-            else if ( isString( type ) ) { newResult = SWITCH_VALIDATIONS( newData ) }
-
-            else { newResult = { status : false, error : "El valor de type no es un array o un string", type } }
-
         }
+
+        else if ( isString( type ) ) { newResult = SWITCH_VALIDATIONS( newData ) }
 
         if ( !newResult.status ) { return newResult }
 

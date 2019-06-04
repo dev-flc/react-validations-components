@@ -78,59 +78,53 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
     try {
         for (var _iterator2 = data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
             var newData = _step2.value;
+            var value = newData.value,
+                type = newData.type,
+                title = newData.title,
+                varError = newData.varError,
+                expRegular = newData.expRegular,
+                message = newData.message,
+                focus = newData.focus;
 
 
-            var newResult = { status: true };
+            var newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
 
-            if (newData.visible === true || newData.visible === undefined) {
-                var value = newData.value,
-                    type = newData.type,
-                    title = newData.title,
-                    varError = newData.varError,
-                    expRegular = newData.expRegular,
-                    message = newData.message,
-                    focus = newData.focus;
+            if (isArray(type)) {
+                var _iteratorNormalCompletion3 = true;
+                var _didIteratorError3 = false;
+                var _iteratorError3 = undefined;
 
+                try {
 
-                if (isArray(type)) {
-                    var _iteratorNormalCompletion3 = true;
-                    var _didIteratorError3 = false;
-                    var _iteratorError3 = undefined;
-
-                    try {
-
-                        for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                            var newType = _step3.value;
+                    for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var newType = _step3.value;
 
 
-                            var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
+                        var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
 
-                            if (resultMulty.status === false) {
-                                newResult = resultMulty;
-                                break;
-                            } else {
-                                newResult = resultMulty;
-                            }
-                        }
-                    } catch (err) {
-                        _didIteratorError3 = true;
-                        _iteratorError3 = err;
-                    } finally {
-                        try {
-                            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                                _iterator3.return();
-                            }
-                        } finally {
-                            if (_didIteratorError3) {
-                                throw _iteratorError3;
-                            }
+                        if (resultMulty.status === false) {
+                            newResult = resultMulty;
+                            break;
+                        } else {
+                            newResult = resultMulty;
                         }
                     }
-                } else if (isString(type)) {
-                    newResult = (0, _switchValidations.SWITCH_VALIDATIONS)(newData);
-                } else {
-                    newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
+                } catch (err) {
+                    _didIteratorError3 = true;
+                    _iteratorError3 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
+                        }
+                    } finally {
+                        if (_didIteratorError3) {
+                            throw _iteratorError3;
+                        }
+                    }
                 }
+            } else if (isString(type)) {
+                newResult = (0, _switchValidations.SWITCH_VALIDATIONS)(newData);
             }
 
             if (!newResult.status) {
