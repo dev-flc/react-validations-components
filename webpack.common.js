@@ -4,9 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
-    entry : {
-        example :  [ "babel-polyfill" , path.resolve( __dirname, 'example/index.js' ) ]
-    },
+    entry : { example :  [ "babel-polyfill" , path.resolve( __dirname, 'example/index.js' ) ] },
 
     output : {
         path          : path.resolve( __dirname, 'public' ),
@@ -17,10 +15,10 @@ module.exports = {
   	module: {
     	rules : [
             {
-                test : /\.(js|jsx)$/,
+                test    : /\.(js|jsx)$/,
                 include : [ path.resolve(__dirname, "example") ],
                 exclude : [ path.resolve(__dirname, "node_modules") ],
-                use  : {
+                use     : {
                     loader  : 'babel-loader'
                 }
             }
@@ -31,10 +29,10 @@ module.exports = {
 
         new CleanWebpackPlugin( [ 'public' ] ),
 
-        new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin( {
             title    : 'webpack',
             filename : 'index.html',
             template : 'example/index.ejs'
-        })
+        } )
     ]
 };
