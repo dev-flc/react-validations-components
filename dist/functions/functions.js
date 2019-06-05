@@ -111,15 +111,16 @@ var dateValidateFormat = exports.dateValidateFormat = function dateValidateForma
 
 var formatDateToRFC = function formatDateToRFC(date) {
 
-    date = new Date(date);
+    var newDate = date.split('-');
+
+    date = new Date(newDate[2] + "/" + newDate[1] + "/" + newDate[0]);
 
     var year = date.getFullYear().toString().substr(-2);
     var month = date.getMonth() + 1;
-    var day = date.getDate() + 1;
+    var day = date.getDate();
 
     month = month <= 9 ? 0 + month.toString() : month;
     day = day <= 9 ? 0 + day.toString() : day;
-
     return "" + year + month + day;
 };
 

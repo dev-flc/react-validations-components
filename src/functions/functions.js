@@ -68,15 +68,16 @@ export let dateValidateFormat = ( value = "", title = "", varError = "", focus =
 
 let formatDateToRFC = date => {
 
-    date = new Date( date );
+    let newDate =  date.split( '-' )
+
+    date = new Date( `${ newDate[ 2 ] }/${ newDate[1] }/${ newDate[0] }` );
 
     let year  = date.getFullYear().toString().substr(-2);
     let month = date.getMonth() + 1;
-    let day   = date.getDate() + 1;
+    let day   = date.getDate();
 
     month = month <= 9 ? 0+month.toString() : month;
     day   = day   <= 9 ? 0+day.toString()   : day;
-
     return `${year}${ month }${ day }`;
 
 }

@@ -25,7 +25,7 @@ export default () => {
         {
             type         : [ 'R', 'RFC', 'RFC_DATE' ],
             value        : 'XXXX920804XX1',       // value rfc
-            valueDate    : '2092-08-04',
+            valueDate    : '04-08-1992',
             title        : 'R.F.C.',               // title rfc
             titleDate    : 'Fecha de nacimiento',
             varError     : 'varErrorRFC',         // varError rfc
@@ -43,12 +43,12 @@ export default () => {
     console.log("REQUIRED >>> ", requiredData( "df" ) )
     console.log("COMBO >>> ",    comboValidate( "1" ) )
     console.log("RADIO >>> ",    radioButtonValidate( false ) );
-    console.log("DATE_TO_RFC",   validationDateRFC( 'XXXX920804XX1', '2092-08-04', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' ) );
+    console.log("DATE_TO_RFC",   validationDateRFC( 'XXXX920804XX1', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' ) );
 
     console.log("SINGLE_VALIDATION >>> ", singleValidation(  {
         type         : [ 'R', 'RFC', 'RFC_DATE' ],
-        value        : 'XXXX920804XX1',
-        valueDate    : '2092-08-04',
+        value        : 'XXXX910223XX1',
+        valueDate    : '23-02-1991',
         title        : 'R.F.C.',
         titleDate    : 'Fecha de nacimiento',
         varError     : 'varErrorRFC',
