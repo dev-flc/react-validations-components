@@ -60,6 +60,12 @@ Object.defineProperty(exports, 'radioButtonValidate', {
         return _functions.radioButtonValidate;
     }
 });
+Object.defineProperty(exports, 'validationDateRFC', {
+    enumerable: true,
+    get: function get() {
+        return _functions.validationDateRFC;
+    }
+});
 
 var _validationOneForOne = require('./functions/validationOneForOne.js');
 

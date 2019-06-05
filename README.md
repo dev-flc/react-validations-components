@@ -53,6 +53,21 @@ To use, import the different functions exposed.
 | varError  | variable error name                |
 | focus     | component identifier               |
 
+
+**Description Parameter Type**
+
+|  value     | Description                        |
+| -----------|------------------------------------|
+| T          | validation of type text            |
+| N          | validation of type number          |
+| TN         | validation of type text and number |
+| RFC        | validation of type RFC             |
+| RFC_DATE   | validation of type RFC and date    |
+| EMAIL      | validation of type email           |
+| COMMON     | validation of type common          |
+| C          | validation of type combo           |
+| RB         | validation of type Radio button    |
+
 ----------------------------------------------------------------------
 
 
@@ -65,7 +80,8 @@ import {
     emailValidate,
     requiredData,
     comboValidate,
-    radioButtonValidate
+    radioButtonValidate,
+    validationDateRFC
 } from 'react-validations-components'
 
 /* COMPLETE EXAMPLE */
@@ -107,6 +123,9 @@ console.log("COMBO >>> ", comboValidate( "1" ) )
 
 
 console.log("RADIO >>> ", radioButtonValidate( false ) )
+// Result successful  = { status : true }
+
+console.log("DATE_TO_RFC",   validationDateRFC( 'XXXX920804XX1', '2092-08-04', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' ) );
 // Result successful  = { status : true }
 
 ```
@@ -158,10 +177,25 @@ console.log( singleValidation( { type : "T", value : "value", title : "title" , 
 The next function is composed of an array of objects, which have the same properties as the previous functions.
 
 ```js
-const DATA = [
-    { type : "N", value : 55, title : "title" , varError : "varError" , focus : "focus" },
-    { type : [ "R", "T" ], value : "value", title : "title" , varError : "varError", focus : "focus" }
-];
+let DATA = [
+        { type : [ "R","N" ],   value : "1212",          title : "example1" , varError : "fer",  focus: "errorrorooror" },
+        { type : [ "R","T" ],   value : 'we',            title : "example2" , varError : "fer",  focus: "errorrorooror" },
+        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc1", focus: "rfc1" },
+        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc2", focus: "rfc2" },
+        { type : "T",           value : 'q',             title : "example3" , varError : "fer",  focus: "errorrorooror" },
+        { type : "T",           value : 'example',       title : "example4" , varError : "fer",  focus: "errorrorooror" },
+        {
+            type         : [ 'R', 'RFC', 'RFC_DATE' ],
+            value        : 'XXXX920804XX1',        // value rfc
+            valueDate    : '2092-08-04',
+            title        : 'R.F.C.',               // title rfc
+            titleDate    : 'Fecha de nacimiento',
+            varError     : 'varErrorRFC',         // varError rfc
+            varErrorDate : 'varErrorDate',
+            focus        : 'focusRFC',            //focusRFC
+            focusDate    : 'focusDate',
+        }
+    ];
 
 console.log( multiValidation( DATA ) )
 

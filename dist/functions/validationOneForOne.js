@@ -21,7 +21,11 @@ var singleValidation = exports.singleValidation = function singleValidation(data
         varError = data.varError,
         expRegular = data.expRegular,
         message = data.message,
-        focus = data.focus;
+        focus = data.focus,
+        valueDate = data.valueDate,
+        titleDate = data.titleDate,
+        varErrorDate = data.varErrorDate,
+        focusDate = data.focusDate;
 
 
     var result = { status: false, error: "El valor de type no es un array o un string", type: type };
@@ -37,7 +41,8 @@ var singleValidation = exports.singleValidation = function singleValidation(data
                 var newType = _step.value;
 
 
-                var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
+                var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus, valueDate: valueDate,
+                    titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
 
                 if (resultMulty.status === false) {
                     result = resultMulty;
@@ -84,11 +89,14 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                 varError = newData.varError,
                 expRegular = newData.expRegular,
                 message = newData.message,
-                focus = newData.focus;
+                focus = newData.focus,
+                valueDate = newData.valueDate,
+                titleDate = newData.titleDate,
+                varErrorDate = newData.varErrorDate,
+                focusDate = newData.focusDate;
 
 
             var newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
-
             if (isArray(type)) {
                 var _iteratorNormalCompletion3 = true;
                 var _didIteratorError3 = false;
@@ -99,8 +107,8 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                     for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                         var newType = _step3.value;
 
-
-                        var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus });
+                        var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus, valueDate: valueDate,
+                            titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
 
                         if (resultMulty.status === false) {
                             newResult = resultMulty;

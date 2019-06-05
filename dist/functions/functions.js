@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
+exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
 
 var _expressions = require("./../util/expressions.js");
 
@@ -98,4 +98,61 @@ var radioButtonValidate = exports.radioButtonValidate = function radioButtonVali
     } else {
         return { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
     }
+};
+
+var dateValidateFormat = exports.dateValidateFormat = function dateValidateFormat() {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+    return RegExp(_expressions.FORMAT_DATE).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
+};
+
+var formatDateToRFC = function formatDateToRFC(date) {
+
+    date = new Date(date);
+
+    var year = date.getFullYear().toString().substr(-2);
+    var month = date.getMonth() + 1;
+    var day = date.getDate() + 1;
+
+    month = month <= 9 ? 0 + month.toString() : month;
+    day = day <= 9 ? 0 + day.toString() : day;
+
+    return "" + year + month + day;
+};
+
+var validationDateRFC = exports.validationDateRFC = function validationDateRFC(rfc, date) {
+    var titleRFC = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    var titleDate = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+    var varErrorRFC = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "";
+    var varErrorDate = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : "";
+    var focusRFC = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : "";
+    var focusDate = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : "";
+
+
+    var result = { status: true
+
+        // validation required date
+    };var resDateRequired = requiredData(date, titleDate.toLowerCase(), varErrorDate, focusDate);
+
+    if (resDateRequired.status === false) {
+        return resDateRequired;
+    }
+
+    // validation format date
+    var resDateaFormt = dateValidateFormat(date, titleDate.toLowerCase(), varErrorDate, focusDate);
+
+    if (resDateaFormt.status === false) {
+        return resDateaFormt;
+    }
+
+    var resNewFormatDate = formatDateToRFC(date);
+
+    if (resNewFormatDate !== rfc.substr(4, 6)) {
+        result = { status: false, error: "La fecha del " + titleRFC + " no coincide con la " + titleDate.toLowerCase() + ".", varError: varErrorRFC, focus: focusRFC };
+    }
+
+    return result;
 };

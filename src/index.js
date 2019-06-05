@@ -8,7 +8,8 @@ export {
     emailValidate,
     commonValidate,
     comboValidate,
-    radioButtonValidate
+    radioButtonValidate,
+    validationDateRFC
 } from './functions/functions.js';
 
 
