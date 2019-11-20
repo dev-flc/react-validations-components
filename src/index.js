@@ -9,9 +9,10 @@ export {
     commonValidate,
     comboValidate,
     radioButtonValidate,
-    validationDateRFC
+    validationDateRFC,
+    dateValidateFormat,
+    validationCheckBox
 } from './functions/functions.js';
-
 
 export { singleValidation, multiValidation } from './functions/validationOneForOne.js'
 

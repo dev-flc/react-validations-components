@@ -1,8 +1,7 @@
 import { SWITCH_VALIDATIONS } from './switchValidations.js';
 
 const isString = ( str ) => Object.prototype.toString.call( str ) === '[object String]';
-const isArray = ( data ) => Array.isArray( data );
-
+const isArray  = ( data ) => Array.isArray( data );
 
 export let singleValidation = data => {
 
@@ -45,6 +44,7 @@ export let multiValidation = data => {
             titleDate, varErrorDate, focusDate } = newData;
 
         let newResult = { status : false, error : "El valor de type no es un array o un string", type }
+
         if ( isArray( type ) ) {
 
             for( let newType of type ) {

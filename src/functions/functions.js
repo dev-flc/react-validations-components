@@ -1,5 +1,8 @@
 import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, FORMAT_DATE }  from "./../util/expressions.js"
 
+import map  from 'lodash/map';
+import some from 'lodash/some';
+
 export let textValidate = ( value = "", title = "", varError = "", focus = "" ) => {
     return RegExp(TEXT).test(value.trim())
     ? { status : true }
@@ -78,6 +81,7 @@ let formatDateToRFC = date => {
 
     month = month <= 9 ? 0+month.toString() : month;
     day   = day   <= 9 ? 0+day.toString()   : day;
+
     return `${year}${ month }${ day }`;
 
 }
@@ -108,4 +112,19 @@ export let validationDateRFC = ( rfc, date, titleRFC = "", titleDate = "", varEr
 
     return result;
 
+}
+
+export let validationCheckBox  = ( value = {}, title = "", varError = "", focus = "" ) => {
+
+    let newVal = val => ( { val } )
+
+    if ( some( map( value, newVal ), { val : true } ) ) {
+
+        return { status : true }
+
+    } else {
+
+        return { status : false, error : `El dato ${title} es requerido.`, varError, focus }
+
+    }
 }

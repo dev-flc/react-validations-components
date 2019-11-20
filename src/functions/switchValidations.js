@@ -9,6 +9,8 @@ import {
     commonValidate,
     comboValidate,
     radioButtonValidate,
+    dateValidateFormat,
+    validationCheckBox,
     validationDateRFC } from './functions.js'
 
 
@@ -21,51 +23,61 @@ export const SWITCH_VALIDATIONS = data => {
 
     switch ( type ) {
 
-        case "R":
+        case "R": // Requerido
             if ( title !== "R.F.C." ) { title = title.toLowerCase() }
             result = requiredData( value, title, varError, focus );
             break;
 
-        case "T":
-            title = title.toLowerCase();
+        case "T": // Texto
+            title  = title.toLowerCase();
             result = textValidate( value, title, varError, focus )
             break;
 
-        case "N":
-            title = title.toLowerCase();
+        case "N": // Numero
+            title  = title.toLowerCase();
             result = numValidate( value, title, varError, focus );
             break;
 
-        case "TN":
-            title = title.toLowerCase();
+        case "TN": // Texto y Numero
+            title  = title.toLowerCase();
             result = textNumberValidate( value, title, varError, focus );
             break;
 
-        case "RFC":
+        case "RFC": // RFC
             result = rfcValidate( value, title, varError, focus );
             break;
 
-        case "RFC_DATE":
+        case "RFC_DATE": // RFC VS Fecha de nacimiento
             result = validationDateRFC( value, valueDate, title, titleDate, varError, varErrorDate, focus, focusDate );
             break;
 
-        case "EMAIL":
-            title = title.toLowerCase();
+        case "EMAIL": // Email
+            title  = title.toLowerCase();
             result = emailValidate( value, title, varError, focus );
             break;
 
-        case "COMMON":
+        case "COMMON": // Comun
             result = commonValidate( value, expRegular, varError, message, focus );
             break;
 
-        case "C":
-            title = title.toLowerCase();
+        case "C": // Combos
+            title  = title.toLowerCase();
             result = comboValidate( value, title, varError, focus );
             break;
 
-        case "RB":
-            title = title.toLowerCase();
+        case "RB": // Redio Buntons
+            title  = title.toLowerCase();
             result = radioButtonValidate( value, title, varError, focus );
+            break;
+
+        case "DATE": // Formato de fecha
+            title  = title.toLowerCase();
+            result = dateValidateFormat( value, title, varError, focus );
+            break;
+
+        case "CHECK": // Checkbox
+            title  = title.toLowerCase();
+            result = validationCheckBox( value, title, varError, focus );
             break;
 
         default:
