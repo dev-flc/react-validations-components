@@ -26,6 +26,7 @@ var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATION
     switch (type) {
 
         case "R":
+            // Requerido
             if (title !== "R.F.C.") {
                 title = title.toLowerCase();
             }
@@ -33,45 +34,66 @@ var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATION
             break;
 
         case "T":
+            // Texto
             title = title.toLowerCase();
             result = (0, _functions.textValidate)(value, title, varError, focus);
             break;
 
         case "N":
+            // Numero
             title = title.toLowerCase();
             result = (0, _functions.numValidate)(value, title, varError, focus);
             break;
 
         case "TN":
+            // Texto y Numero
             title = title.toLowerCase();
             result = (0, _functions.textNumberValidate)(value, title, varError, focus);
             break;
 
         case "RFC":
+            // RFC
             result = (0, _functions.rfcValidate)(value, title, varError, focus);
             break;
 
         case "RFC_DATE":
+            // RFC VS Fecha de nacimiento
             result = (0, _functions.validationDateRFC)(value, valueDate, title, titleDate, varError, varErrorDate, focus, focusDate);
             break;
 
         case "EMAIL":
+            // Email
             title = title.toLowerCase();
             result = (0, _functions.emailValidate)(value, title, varError, focus);
             break;
 
         case "COMMON":
+            // Comun
             result = (0, _functions.commonValidate)(value, expRegular, varError, message, focus);
             break;
 
         case "C":
+            // Combos
             title = title.toLowerCase();
             result = (0, _functions.comboValidate)(value, title, varError, focus);
             break;
 
         case "RB":
+            // Redio Buntons
             title = title.toLowerCase();
             result = (0, _functions.radioButtonValidate)(value, title, varError, focus);
+            break;
+
+        case "DATE":
+            // Formato de fecha
+            title = title.toLowerCase();
+            result = (0, _functions.dateValidateFormat)(value, title, varError, focus);
+            break;
+
+        case "CHECK":
+            // Checkbox
+            title = title.toLowerCase();
+            result = (0, _functions.validationCheckBox)(value, title, varError, focus);
             break;
 
         default:

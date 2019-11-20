@@ -1,11 +1,21 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
+exports.validationCheckBox = exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
 
-var _expressions = require("./../util/expressions.js");
+var _expressions = require('./../util/expressions.js');
+
+var _map = require('lodash/map');
+
+var _map2 = _interopRequireDefault(_map);
+
+var _some = require('lodash/some');
+
+var _some2 = _interopRequireDefault(_some);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var textValidate = exports.textValidate = function textValidate() {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
@@ -13,7 +23,7 @@ var textValidate = exports.textValidate = function textValidate() {
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo letras.", varError: varError, focus: focus };
+    return RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido, ingresa solo letras.', varError: varError, focus: focus };
 };
 
 var numValidate = exports.numValidate = function numValidate() {
@@ -22,7 +32,7 @@ var numValidate = exports.numValidate = function numValidate() {
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo n\xFAmeros.", varError: varError, focus: focus };
+    return RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido, ingresa solo n\xFAmeros.', varError: varError, focus: focus };
 };
 
 var textNumberValidate = exports.textNumberValidate = function textNumberValidate() {
@@ -31,7 +41,7 @@ var textNumberValidate = exports.textNumberValidate = function textNumberValidat
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido, ingresa solo letras y n\xFAmeros.", varError: varError, focus: focus };
+    return RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido, ingresa solo letras y n\xFAmeros.', varError: varError, focus: focus };
 };
 
 var rfcValidate = exports.rfcValidate = function rfcValidate() {
@@ -40,7 +50,7 @@ var rfcValidate = exports.rfcValidate = function rfcValidate() {
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.RFC).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
+    return RegExp(_expressions.RFC).test(value) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido', varError: varError, focus: focus };
 };
 
 var emailValidate = exports.emailValidate = function emailValidate() {
@@ -49,7 +59,7 @@ var emailValidate = exports.emailValidate = function emailValidate() {
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.EMAIL).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
+    return RegExp(_expressions.EMAIL).test(value) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido', varError: varError, focus: focus };
 };
 
 var commonValidate = exports.commonValidate = function commonValidate() {
@@ -69,7 +79,7 @@ var requiredData = exports.requiredData = function requiredData() {
 
     var result = { status: true };
     if (value === null || value === "") {
-        result = { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
+        result = { status: false, error: 'El dato ' + title + ' es requerido.', varError: varError, focus: focus };
     }
     return result;
 };
@@ -83,7 +93,7 @@ var comboValidate = exports.comboValidate = function comboValidate() {
     if (value !== null && value !== -1 && value !== "" && value !== undefined) {
         return { status: true };
     } else {
-        return { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
+        return { status: false, error: 'El dato ' + title + ' es requerido.', varError: varError, focus: focus };
     }
 };
 
@@ -96,7 +106,7 @@ var radioButtonValidate = exports.radioButtonValidate = function radioButtonVali
     if (value === true || value === false) {
         return { status: true };
     } else {
-        return { status: false, error: "El dato " + title + " es requerido.", varError: varError, focus: focus };
+        return { status: false, error: 'El dato ' + title + ' es requerido.', varError: varError, focus: focus };
     }
 };
 
@@ -106,14 +116,14 @@ var dateValidateFormat = exports.dateValidateFormat = function dateValidateForma
     var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.FORMAT_DATE).test(value) ? { status: true } : { status: false, error: "El dato " + title + " no es v\xE1lido", varError: varError, focus: focus };
+    return RegExp(_expressions.FORMAT_DATE).test(value) ? { status: true } : { status: false, error: 'El dato ' + title + ' no es v\xE1lido', varError: varError, focus: focus };
 };
 
 var formatDateToRFC = function formatDateToRFC(date) {
 
     var newDate = date.split('-');
 
-    date = new Date(newDate[2] + "/" + newDate[1] + "/" + newDate[0]);
+    date = new Date(newDate[2] + '/' + newDate[1] + '/' + newDate[0]);
 
     var year = date.getFullYear().toString().substr(-2);
     var month = date.getMonth() + 1;
@@ -121,7 +131,8 @@ var formatDateToRFC = function formatDateToRFC(date) {
 
     month = month <= 9 ? 0 + month.toString() : month;
     day = day <= 9 ? 0 + day.toString() : day;
-    return "" + year + month + day;
+
+    return '' + year + month + day;
 };
 
 var validationDateRFC = exports.validationDateRFC = function validationDateRFC(rfc, date) {
@@ -152,8 +163,28 @@ var validationDateRFC = exports.validationDateRFC = function validationDateRFC(r
     var resNewFormatDate = formatDateToRFC(date);
 
     if (resNewFormatDate !== rfc.substr(4, 6)) {
-        result = { status: false, error: "La fecha del " + titleRFC + " no coincide con la " + titleDate.toLowerCase() + ".", varError: varErrorRFC, focus: focusRFC };
+        result = { status: false, error: 'La fecha del ' + titleRFC + ' no coincide con la ' + titleDate.toLowerCase() + '.', varError: varErrorRFC, focus: focusRFC };
     }
 
     return result;
+};
+
+var validationCheckBox = exports.validationCheckBox = function validationCheckBox() {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var varError = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    var focus = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+
+    var newVal = function newVal(val) {
+        return { val: val };
+    };
+
+    if ((0, _some2.default)((0, _map2.default)(value, newVal), { val: true })) {
+
+        return { status: true };
+    } else {
+
+        return { status: false, error: 'El dato ' + title + ' es requerido.', varError: varError, focus: focus };
+    }
 };

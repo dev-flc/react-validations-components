@@ -97,6 +97,7 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
 
 
             var newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
+
             if (isArray(type)) {
                 var _iteratorNormalCompletion3 = true;
                 var _didIteratorError3 = false;

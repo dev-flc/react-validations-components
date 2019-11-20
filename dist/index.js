@@ -66,6 +66,18 @@ Object.defineProperty(exports, 'validationDateRFC', {
         return _functions.validationDateRFC;
     }
 });
+Object.defineProperty(exports, 'dateValidateFormat', {
+    enumerable: true,
+    get: function get() {
+        return _functions.dateValidateFormat;
+    }
+});
+Object.defineProperty(exports, 'validationCheckBox', {
+    enumerable: true,
+    get: function get() {
+        return _functions.validationCheckBox;
+    }
+});
 
 var _validationOneForOne = require('./functions/validationOneForOne.js');
 
