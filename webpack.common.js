@@ -30,7 +30,7 @@ module.exports = {
         new CleanWebpackPlugin( [ 'public' ] ),
 
         new HtmlWebpackPlugin( {
-            title    : 'webpack',
+            title    : `Versión : ${process.env.VERSION_APP}`,
             filename : 'index.html',
             template : 'example/index.ejs'
         } )

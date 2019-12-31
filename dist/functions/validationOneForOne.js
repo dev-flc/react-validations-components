@@ -17,12 +17,12 @@ var isArray = function isArray(data) {
 var singleValidation = exports.singleValidation = function singleValidation(data) {
     var value = data.value,
         type = data.type,
-        title = data.title,
         varError = data.varError,
         expRegular = data.expRegular,
         message = data.message,
-        focus = data.focus,
+        id = data.id,
         valueDate = data.valueDate,
+        titleRFC = data.titleRFC,
         titleDate = data.titleDate,
         varErrorDate = data.varErrorDate,
         focusDate = data.focusDate;
@@ -41,7 +41,7 @@ var singleValidation = exports.singleValidation = function singleValidation(data
                 var newType = _step.value;
 
 
-                var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus, valueDate: valueDate,
+                var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, titleRFC: titleRFC, varError: varError, expRegular: expRegular, message: message, id: id, valueDate: valueDate,
                     titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
 
                 if (resultMulty.status === false) {
@@ -85,12 +85,12 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
             var newData = _step2.value;
             var value = newData.value,
                 type = newData.type,
-                title = newData.title,
                 varError = newData.varError,
                 expRegular = newData.expRegular,
                 message = newData.message,
-                focus = newData.focus,
+                id = newData.id,
                 valueDate = newData.valueDate,
+                titleRFC = newData.titleRFC,
                 titleDate = newData.titleDate,
                 varErrorDate = newData.varErrorDate,
                 focusDate = newData.focusDate;
@@ -108,7 +108,7 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                     for (var _iterator3 = type[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                         var newType = _step3.value;
 
-                        var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, title: title, varError: varError, expRegular: expRegular, message: message, focus: focus, valueDate: valueDate,
+                        var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, titleRFC: titleRFC, varError: varError, expRegular: expRegular, message: message, id: id, valueDate: valueDate,
                             titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
 
                         if (resultMulty.status === false) {

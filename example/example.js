@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 /*  Development */
-import {
-    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat, validationCheckBox
-} from './../src/index.js'
-
-/* Production */
 // import {
 //     rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
 //     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat, validationCheckBox
-// } from './../dist/index.js'
+// } from './../src/index.js'
+
+
+/* Production */
+import {
+    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat, validationCheckBox
+} from './../dist/index.js'
 
 
 export default () => {

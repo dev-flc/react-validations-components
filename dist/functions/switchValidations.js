@@ -10,15 +10,15 @@ var _functions = require("./functions.js");
 var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATIONS(data) {
     var value = data.value,
         type = data.type,
-        title = data.title,
         varError = data.varError,
         expRegular = data.expRegular,
         message = data.message,
-        focus = data.focus,
+        id = data.id,
         valueDate = data.valueDate,
         titleDate = data.titleDate,
         varErrorDate = data.varErrorDate,
-        focusDate = data.focusDate;
+        focusDate = data.focusDate,
+        titleRFC = data.titleRFC;
 
 
     var result = { status: false, error: "error" };
@@ -27,73 +27,62 @@ var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATION
 
         case "R":
             // Requerido
-            if (title !== "R.F.C.") {
-                title = title.toLowerCase();
-            }
-            result = (0, _functions.requiredData)(value, title, varError, focus);
+            result = (0, _functions.requiredData)(value, varError, id);
             break;
 
         case "T":
             // Texto
-            title = title.toLowerCase();
-            result = (0, _functions.textValidate)(value, title, varError, focus);
+            result = (0, _functions.textValidate)(value, varError, id);
             break;
 
         case "N":
             // Numero
-            title = title.toLowerCase();
-            result = (0, _functions.numValidate)(value, title, varError, focus);
+            result = (0, _functions.numValidate)(value, varError, id);
             break;
 
         case "TN":
             // Texto y Numero
-            title = title.toLowerCase();
-            result = (0, _functions.textNumberValidate)(value, title, varError, focus);
+            result = (0, _functions.textNumberValidate)(value, varError, id);
             break;
 
         case "RFC":
             // RFC
-            result = (0, _functions.rfcValidate)(value, title, varError, focus);
+            result = (0, _functions.rfcValidate)(value, varError, id);
             break;
 
         case "RFC_DATE":
             // RFC VS Fecha de nacimiento
-            result = (0, _functions.validationDateRFC)(value, valueDate, title, titleDate, varError, varErrorDate, focus, focusDate);
+            result = (0, _functions.validationDateRFC)(value, valueDate, titleRFC, titleDate, varError, varErrorDate, id, focusDate);
             break;
 
         case "EMAIL":
             // Email
-            title = title.toLowerCase();
-            result = (0, _functions.emailValidate)(value, title, varError, focus);
+            result = (0, _functions.emailValidate)(value, varError, id);
             break;
 
         case "COMMON":
             // Comun
-            result = (0, _functions.commonValidate)(value, expRegular, varError, message, focus);
+            result = (0, _functions.commonValidate)(value, expRegular, varError, message, id);
             break;
 
         case "C":
             // Combos
-            title = title.toLowerCase();
-            result = (0, _functions.comboValidate)(value, title, varError, focus);
+            result = (0, _functions.comboValidate)(value, varError, id);
             break;
 
         case "RB":
             // Redio Buntons
-            title = title.toLowerCase();
-            result = (0, _functions.radioButtonValidate)(value, title, varError, focus);
+            result = (0, _functions.radioButtonValidate)(value, varError, id);
             break;
 
         case "DATE":
             // Formato de fecha
-            title = title.toLowerCase();
-            result = (0, _functions.dateValidateFormat)(value, title, varError, focus);
+            result = (0, _functions.dateValidateFormat)(value, varError, id);
             break;
 
         case "CHECK":
             // Checkbox
-            title = title.toLowerCase();
-            result = (0, _functions.validationCheckBox)(value, title, varError, focus);
+            result = (0, _functions.validationCheckBox)(value, varError, id);
             break;
 
         default:
