@@ -4,7 +4,7 @@
   "description": "validation",
   "main": "dist/index.js",
   "scripts": {
-    "development": "webpack-dev-server --progress  --config webpack.dev.js",
+    "dev": "webpack-dev-server --progress  --config webpack.dev.js",
     "build": " npm run clean && babel src -d dist --copy-files",
     "clean": "rm -r dist && mkdir dist"
   },

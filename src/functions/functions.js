@@ -3,70 +3,70 @@ import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, FORMAT_DATE }  from "./../util/e
 import map  from 'lodash/map';
 import some from 'lodash/some';
 
-export let textValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let textValidate = ( value = "", varError = "", id = "" ) => {
     return RegExp(TEXT).test(value.trim())
     ? { status : true }
-    : { status : false, error : `El dato ${title} no es válido, ingresa solo letras.`, varError, focus }
+    : { status : false, error : `El dato no es válido, ingresa solo letras.`, varError, id }
 }
 
-export let numValidate = ( value = "", title = "", varError = "", focus = ""  ) => {
+export let numValidate = ( value = "", varError = "", id = ""  ) => {
     return RegExp(NUMBER).test(value)
     ? { status : true }
-    : { status : false, error : `El dato ${title} no es válido, ingresa solo números.`, varError, focus }
+    : { status : false, error : `El dato no es válido, ingresa solo números.`, varError, id }
 }
 
-export let textNumberValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let textNumberValidate = ( value = "", varError = "", id = "" ) => {
     return RegExp(TEXT_NUMBER).test(value)
     ? { status: true }
-    : { status: false, error : `El dato ${title} no es válido, ingresa solo letras y números.`, varError, focus }
+    : { status: false, error : `El dato no es válido, ingresa solo letras y números.`, varError, id }
 }
 
-export let rfcValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let rfcValidate = ( value = "", varError = "", id = "" ) => {
     return RegExp(RFC).test(value)
     ? { status: true }
-    : { status: false, error : `El dato ${title} no es válido`, varError, focus }
+    : { status: false, error : `El dato no es válido`, varError, id }
 }
 
-export let emailValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let emailValidate = ( value = "", varError = "", id = "" ) => {
     return RegExp(EMAIL).test(value)
     ? { status: true }
-    : { status: false, error : `El dato ${title} no es válido`, varError, focus }
+    : { status: false, error : `El dato no es válido`, varError, id }
 }
 
-export let commonValidate = ( value = "", expRegular = "", varError = "", message = "",  ) => {
+export let commonValidate = ( value = "", expRegular = "", varError = "", message = "", id = "" ) => {
     return RegExp(expRegular).test(value)
     ? { status: true }
-    : { status: false, error : message, varError, focus }
+    : { status: false, error : message, varError, id }
 }
 
-export const requiredData = ( value = "", title = "", varError = "", focus = "" ) => {
+export const requiredData = ( value = "", varError = "", id = "" ) => {
     let result = { status : true }
     if( value === null || value === ""  ) {
-        result = { status : false, error : `El dato ${title} es requerido.`, varError, focus };
+        result = { status : false, error : `El dato es requerido.`, varError, id };
     }
     return result;
 };
 
-export let comboValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let comboValidate = ( value = "", varError = "", id = "" ) => {
     if(value !== null && value !== -1 && (value !== "" && value !== undefined )){
         return  { status: true }
     }else{
-        return { status : false, error : `El dato ${title} es requerido.`, varError, focus }
+        return { status : false, error : `El dato es requerido.`, varError, id }
     }
 }
 
-export let radioButtonValidate = ( value = "", title = "", varError = "", focus = "" ) => {
+export let radioButtonValidate = ( value = "", varError = "", id = "" ) => {
     if(value === true || value === false){
         return { status : true }
     }else{
-        return { status : false, error : `El dato ${title} es requerido.`, varError, focus }
+        return { status : false, error : `El dato es requerido.`, varError, id }
     }
 }
 
-export let dateValidateFormat = ( value = "", title = "", varError = "", focus = "" ) => {
+export let dateValidateFormat = ( value = "", varError = "", id = "" ) => {
     return RegExp(FORMAT_DATE).test(value)
-    ? { status: true }
-    : { status: false, error : `El dato ${title} no es válido`, varError, focus }
+    ? { status : true }
+    : { status : false, error : `El dato no es válido`, varError, id }
 }
 
 let formatDateToRFC = date => {
@@ -107,14 +107,14 @@ export let validationDateRFC = ( rfc, date, titleRFC = "", titleDate = "", varEr
     let resNewFormatDate = formatDateToRFC( date );
 
     if ( resNewFormatDate !== rfc.substr(4,6) ) {
-        result = { status : false, error :`La fecha del ${ titleRFC } no coincide con la ${ titleDate.toLowerCase() }.` , varError : varErrorRFC, focus : focusRFC }
+        result = { status : false, error :`La fecha del ${ titleRFC } no coincide con la ${ titleDate.toLowerCase() }.` , varError : varErrorRFC, id : focusRFC }
     }
 
     return result;
 
 }
 
-export let validationCheckBox  = ( value = {}, title = "", varError = "", focus = "" ) => {
+export let validationCheckBox  = ( value = {}, varError = "", id = "" ) => {
 
     let newVal = val => ( { val } )
 
@@ -124,7 +124,7 @@ export let validationCheckBox  = ( value = {}, title = "", varError = "", focus 
 
     } else {
 
-        return { status : false, error : `El dato ${title} es requerido.`, varError, focus }
+        return { status : false, error : `El dato es requerido.`, varError, id }
 
     }
 }

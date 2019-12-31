@@ -90,13 +90,13 @@ import {
 let value    = "VALIDATION TYPE TEXT";
 let name     = "NAME";
 let varError = "errorText";
-let focus    = "ID_COMPONENT"
+let id       = "ID_COMPONENT"
 
-console.log( "TEXT >>> ", textValidate( value, name ,varError, focus ) )
+console.log( "TEXT >>> ", textValidate( value, name ,varError, id ) )
 
 // Result Successful = { status : true }
 
-// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
+// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", id : "ID_COMPONENT"}
 
 /* BASIC EXAMPLES */
 
@@ -158,14 +158,12 @@ The following function can identify a type of validation or several TYPE that ca
 
 ```js
 
-console.log( singleValidation( { type : [ "R", "T" ], value : "value", title : "title" , varError : "varError", focus : "focus" } ) )
+console.log( singleValidation( { type : [ "R", "T" ], value : "value", title : "title" , varError : "varError", id : "focus" } ) )
 // Result successful  = { status : true }
 
 // Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
 
-
-
-console.log( singleValidation( { type : "T", value : "value", title : "title" , varError : "varError", focus : "focus" } ) )
+console.log( singleValidation( { type : "T", value : "value", title : "title" , varError : "varError", id : "focus" } ) )
 // Result successful  = { status : true }
 
 // Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
@@ -178,12 +176,12 @@ The next function is composed of an array of objects, which have the same proper
 
 ```js
 let DATA = [
-        { type : [ "R","N" ],   value : "1212",          title : "example1" , varError : "fer",  focus: "errorrorooror" },
-        { type : [ "R","T" ],   value : 'we',            title : "example2" , varError : "fer",  focus: "errorrorooror" },
-        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc1", focus: "rfc1" },
-        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc2", focus: "rfc2" },
-        { type : "T",           value : 'q',             title : "example3" , varError : "fer",  focus: "errorrorooror" },
-        { type : "T",           value : 'example',       title : "example4" , varError : "fer",  focus: "errorrorooror" },
+        { type : [ "R","N" ],   value : "1212",          title : "example1" , varError : "fer",     id : "errorrorooror" },
+        { type : [ "R","T" ],   value : 'we',            title : "example2" , varError : "fer",     id : "errorrorooror" },
+        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc1", id : "rfc1" },
+        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc2", id : "rfc2" },
+        { type : "T",           value : 'q',             title : "example3" , varError : "fer",     id : "errorrorooror" },
+        { type : "T",           value : 'example',       title : "example4" , varError : "fer",     id : "errorrorooror" },
         {
             type         : [ 'R', 'RFC', 'RFC_DATE' ],
             value        : 'XXXX920804XX1',        // value rfc
@@ -192,7 +190,7 @@ let DATA = [
             titleDate    : 'Fecha de nacimiento',
             varError     : 'varErrorRFC',         // varError rfc
             varErrorDate : 'varErrorDate',
-            focus        : 'focusRFC',            //focusRFC
+            id           : 'focusRFC',            //focusRFC
             focusDate    : 'focusDate',
         }
     ];

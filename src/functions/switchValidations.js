@@ -16,68 +16,59 @@ import {
 
 export const SWITCH_VALIDATIONS = data => {
 
-    let { value, type, title, varError, expRegular, message, focus, valueDate,
-        titleDate, varErrorDate, focusDate } = data;
+    let { value, type, varError, expRegular, message, id, valueDate,
+        titleDate, varErrorDate, focusDate, titleRFC } = data;
 
     let result = { status: false, error: "error" };
 
     switch ( type ) {
 
         case "R": // Requerido
-            if ( title !== "R.F.C." ) { title = title.toLowerCase() }
-            result = requiredData( value, title, varError, focus );
+            result = requiredData( value, varError, id );
             break;
 
         case "T": // Texto
-            title  = title.toLowerCase();
-            result = textValidate( value, title, varError, focus )
+            result = textValidate( value, varError, id )
             break;
 
         case "N": // Numero
-            title  = title.toLowerCase();
-            result = numValidate( value, title, varError, focus );
+            result = numValidate( value, varError, id );
             break;
 
         case "TN": // Texto y Numero
-            title  = title.toLowerCase();
-            result = textNumberValidate( value, title, varError, focus );
+            result = textNumberValidate( value, varError, id );
             break;
 
         case "RFC": // RFC
-            result = rfcValidate( value, title, varError, focus );
+            result = rfcValidate( value, varError, id );
             break;
 
         case "RFC_DATE": // RFC VS Fecha de nacimiento
-            result = validationDateRFC( value, valueDate, title, titleDate, varError, varErrorDate, focus, focusDate );
+            result = validationDateRFC( value, valueDate, titleRFC, titleDate, varError, varErrorDate, id, focusDate );
             break;
 
         case "EMAIL": // Email
-            title  = title.toLowerCase();
-            result = emailValidate( value, title, varError, focus );
+            result = emailValidate( value, varError, id );
             break;
 
         case "COMMON": // Comun
-            result = commonValidate( value, expRegular, varError, message, focus );
+            result = commonValidate( value, expRegular, varError, message, id );
             break;
 
         case "C": // Combos
-            title  = title.toLowerCase();
-            result = comboValidate( value, title, varError, focus );
+            result = comboValidate( value, varError, id );
             break;
 
         case "RB": // Redio Buntons
-            title  = title.toLowerCase();
-            result = radioButtonValidate( value, title, varError, focus );
+            result = radioButtonValidate( value, varError, id );
             break;
 
         case "DATE": // Formato de fecha
-            title  = title.toLowerCase();
-            result = dateValidateFormat( value, title, varError, focus );
+            result = dateValidateFormat( value, varError, id );
             break;
 
         case "CHECK": // Checkbox
-            title  = title.toLowerCase();
-            result = validationCheckBox( value, title, varError, focus );
+            result = validationCheckBox( value, varError, id );
             break;
 
         default:
