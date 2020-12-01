@@ -11,9 +11,9 @@ export {
     radioButtonValidate,
     validationDateRFC,
     dateValidateFormat,
-    validationCheckBox
+    validationCheckBox,
+    textAreSpecialValidate,
+    specialCharacterInValidate
 } from './functions/functions.js';
 
 export { singleValidation, multiValidation } from './functions/validationOneForOne.js'
-
-

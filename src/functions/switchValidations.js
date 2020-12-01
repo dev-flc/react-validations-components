@@ -11,7 +11,9 @@ import {
     radioButtonValidate,
     dateValidateFormat,
     validationCheckBox,
-    validationDateRFC } from './functions.js'
+    validationDateRFC,
+    textAreSpecialValidate,
+    specialCharacterInValidate } from './functions.js'
 
 
 export const SWITCH_VALIDATIONS = data => {
@@ -69,6 +71,14 @@ export const SWITCH_VALIDATIONS = data => {
 
         case "CHECK": // Checkbox
             result = validationCheckBox( value, varError, id );
+            break;
+
+        case "TEXT_AREA_SPECIAL": // Carater especial multilinea
+            result = textAreSpecialValidate( value, varError, id );
+            break;
+
+        case "SPECIAL_CHARACTER": // Carater especial
+            result = specialCharacterInValidate( value, varError, id );
             break;
 
         default:

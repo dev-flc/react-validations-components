@@ -1,4 +1,4 @@
-import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, FORMAT_DATE }  from "./../util/expressions.js"
+import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, FORMAT_DATE, TEXT_AREA_SPECIAL, SPECIAL_CHARACTER }  from "./../util/expressions.js"
 
 import map  from 'lodash/map';
 import some from 'lodash/some';
@@ -37,6 +37,18 @@ export let commonValidate = ( value = "", expRegular = "", varError = "", messag
     return RegExp(expRegular).test(value)
     ? { status: true }
     : { status: false, error : message, varError, id }
+}
+
+export let textAreSpecialValidate = ( value = "", varError = "", id = "" ) => {
+    return RegExp(TEXT_AREA_SPECIAL).test(value)
+    ? { status: true }
+    : { status: false, error : `El dato no es válido`, varError, id }
+}
+
+export let specialCharacterInValidate = ( value = "", varError = "", id = "" ) => {
+    return RegExp(SPECIAL_CHARACTER).test(value)
+    ? { status: true }
+    : { status: false, error : `El dato no es válido`, varError, id }
 }
 
 export const requiredData = ( value = "", varError = "", id = "" ) => {

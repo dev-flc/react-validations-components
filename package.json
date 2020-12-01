@@ -4,7 +4,7 @@
   "description": "validation",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "VERSION_APP=$npm_package_version webpack-dev-server --progress  --config webpack.dev.js",
+    "devWin": "SET VERSION_APP=%npm_package_version%& webpack-dev-server --progress  --config webpack.dev.js",
     "build": "VERSION_APP=$npm_package_version npm run clean && babel src -d dist --copy-files",
     "clean": "rm -r dist && mkdir dist"
   },

@@ -56,17 +56,19 @@ To use, import the different functions exposed.
 
 **Description Parameter Type**
 
-|  value     | Description                        |
-| -----------|------------------------------------|
-| T          | validation of type text            |
-| N          | validation of type number          |
-| TN         | validation of type text and number |
-| RFC        | validation of type RFC             |
-| RFC_DATE   | validation of type RFC and date    |
-| EMAIL      | validation of type email           |
-| COMMON     | validation of type common          |
-| C          | validation of type combo           |
-| RB         | validation of type Radio button    |
+|  value            | Description                          |
+| ------------------|--------------------------------------|
+| T                 | validation of type text              |
+| N                 | validation of type number            |
+| TN                | validation of type text and number   |
+| RFC               | validation of type RFC               |
+| RFC_DATE          | validation of type RFC and date      |
+| EMAIL             | validation of type email             |
+| COMMON            | validation of type common            |
+| C                 | validation of type combo             |
+| RB                | validation of type Radio button      |
+| TEXT_AREA_SPECIAL | validation of type tex area multi    |
+| SPECIAL_CHARACTER | validation of type special character |
 
 ----------------------------------------------------------------------
 
@@ -81,7 +83,9 @@ import {
     requiredData,
     comboValidate,
     radioButtonValidate,
-    validationDateRFC
+    validationDateRFC,
+    textAreSpecialValidate,
+    specialCharacterInValidate
 } from 'react-validations-components'
 
 /* COMPLETE EXAMPLE */
@@ -127,6 +131,15 @@ console.log("RADIO >>> ", radioButtonValidate( false ) )
 
 console.log("DATE_TO_RFC",   validationDateRFC( 'XXXX920804XX1', '2092-08-04', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' ) );
 // Result successful  = { status : true }
+
+
+console.log( "SPECIAL_CHA >>>", textAreSpecialValidate( ":;#/()&\-_*,." ) );
+// Result successful  = { status : true }
+
+
+console.log( "SPECIAL_IN >>>",  specialCharacterInValidate( ":;#/()&\-_*,." ) );
+// Result successful  = { status : true }
+
 
 ```
 
