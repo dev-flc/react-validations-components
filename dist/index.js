@@ -78,6 +78,18 @@ Object.defineProperty(exports, 'validationCheckBox', {
         return _functions.validationCheckBox;
     }
 });
+Object.defineProperty(exports, 'textAreSpecialValidate', {
+    enumerable: true,
+    get: function get() {
+        return _functions.textAreSpecialValidate;
+    }
+});
+Object.defineProperty(exports, 'specialCharacterInValidate', {
+    enumerable: true,
+    get: function get() {
+        return _functions.specialCharacterInValidate;
+    }
+});
 
 var _validationOneForOne = require('./functions/validationOneForOne.js');
 
