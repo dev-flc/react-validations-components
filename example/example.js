@@ -1,19 +1,19 @@
 import React from 'react';
 
 /*  Development */
- import {
-     rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat, 
-     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
- } from './../src/index.js'
+/* import {
+    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
+ } from './../src/index.js' */
 
 
 /* Production */
-//import {
-//    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-//    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat, 
-//    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
-//} from './../dist/index.js'
+import {
+    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
+} from './../dist/index.js'
 
 export default () => {
 
@@ -39,7 +39,7 @@ export default () => {
             focusDate    : 'focusDate',
         },
         { type : "COMMON", value : 'sd', expRegular : /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/, varError : "fer", id : "errorrorooror", message : 'wshbehfbwejf' }
-        
+
     ];
 
     console.log( "NUM >>>",         numValidate( '134344' ) )

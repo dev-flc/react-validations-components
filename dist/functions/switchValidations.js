@@ -85,6 +85,16 @@ var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATION
             result = (0, _functions.validationCheckBox)(value, varError, id);
             break;
 
+        case "TEXT_AREA_SPECIAL":
+            // Carater especial multilinea
+            result = (0, _functions.textAreSpecialValidate)(value, varError, id);
+            break;
+
+        case "SPECIAL_CHARACTER":
+            // Carater especial
+            result = (0, _functions.specialCharacterInValidate)(value, varError, id);
+            break;
+
         default:
             console.log("El tipo de validación no existe :(", type);
             break;

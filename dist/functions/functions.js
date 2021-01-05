@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.validationCheckBox = exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
+exports.validationCheckBox = exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.specialCharacterInValidate = exports.textAreSpecialValidate = exports.commonValidate = exports.emailValidate = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
 
 var _expressions = require('./../util/expressions.js');
 
@@ -65,6 +65,22 @@ var commonValidate = exports.commonValidate = function commonValidate() {
     var id = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "";
 
     return RegExp(expRegular).test(value) ? { status: true } : { status: false, error: message, varError: varError, id: id };
+};
+
+var textAreSpecialValidate = exports.textAreSpecialValidate = function textAreSpecialValidate() {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var varError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+
+    return RegExp(_expressions.TEXT_AREA_SPECIAL).test(value) ? { status: true } : { status: false, error: 'El dato no es v\xE1lido', varError: varError, id: id };
+};
+
+var specialCharacterInValidate = exports.specialCharacterInValidate = function specialCharacterInValidate() {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var varError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+
+    return RegExp(_expressions.SPECIAL_CHARACTER).test(value) ? { status: true } : { status: false, error: 'El dato no es v\xE1lido', varError: varError, id: id };
 };
 
 var requiredData = exports.requiredData = function requiredData() {
