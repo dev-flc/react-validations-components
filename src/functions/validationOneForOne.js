@@ -35,7 +35,6 @@ export let singleValidation = data => {
 
 
 export let multiValidation = data => {
-
     let result = { status : true };
 
     for ( let newData of data ) {

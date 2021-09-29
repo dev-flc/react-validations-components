@@ -1,10 +1,12 @@
 
 export {
+
     requiredData,
     textValidate,
     numValidate,
     textNumberValidate,
     rfcValidate,
+    rfcValidateClave,
     emailValidate,
     commonValidate,
     comboValidate,

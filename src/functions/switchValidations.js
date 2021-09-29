@@ -5,6 +5,7 @@ import {
     numValidate,
     textNumberValidate,
     rfcValidate,
+    rfcValidateClave,
     emailValidate,
     commonValidate,
     comboValidate,
@@ -43,6 +44,10 @@ export const SWITCH_VALIDATIONS = data => {
 
         case "RFC": // RFC
             result = rfcValidate( value, varError, id );
+            break;
+
+        case "RFC_CLAVE": // RFC sin cave
+            result = rfcValidateClave( value, varError, id );
             break;
 
         case "RFC_DATE": // RFC VS Fecha de nacimiento

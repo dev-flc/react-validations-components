@@ -1,4 +1,4 @@
-import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, FORMAT_DATE, TEXT_AREA_SPECIAL, SPECIAL_CHARACTER }  from "./../util/expressions.js"
+import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, RFC_CLAVE, FORMAT_DATE, TEXT_AREA_SPECIAL, SPECIAL_CHARACTER }  from "./../util/expressions.js"
 
 import map  from 'lodash/map';
 import some from 'lodash/some';
@@ -23,6 +23,12 @@ export let textNumberValidate = ( value = "", varError = "", id = "" ) => {
 
 export let rfcValidate = ( value = "", varError = "", id = "" ) => {
     return RegExp(RFC).test(value)
+    ? { status: true }
+    : { status: false, error : `El dato no es válido`, varError, id }
+}
+
+export let rfcValidateClave = ( value = "", varError = "", id = "" ) => {
+    return RegExp(RFC_CLAVE).test(value)
     ? { status: true }
     : { status: false, error : `El dato no es válido`, varError, id }
 }
