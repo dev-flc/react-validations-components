@@ -27,7 +27,7 @@ export default () => {
     const [ rfcValueValidateClave, setRfcValidateClave ]                     = useState( "XXXX920807" )
     const [ emailValueValidate, setEmailValidate ]                           = useState( "fer.l.c@gmail.com" )
     const [ requiredDataValue, setRequiredData ]                             = useState( "aabc" )
-    const [ comboValidateValue, setComboValidate ]                           = useState("1")
+    const [ comboValidateValue, setComboValidate ]                           = useState( "1" )
     const [ radioButtonValidateValue, setRadioButtonValidate ]               = useState( true )
     const [ validationDateRFCValue, setValidationDateRFC ]                   = useState( 'XXXX920804LFP', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' )
     const [ dateValidateFormatValue, setSateValidateFormat ]                 = useState( '31/02/1991' )
@@ -37,7 +37,6 @@ export default () => {
 
     const [ multiValue, setMultiValue ]   = useState( DATA );
     const [ singleValue, setSingleValue ] = useState( DATA[3] );
-
 
     const arreglodedatos = [
         {
@@ -153,7 +152,7 @@ export default () => {
             aplyParse     : true
         },
         {
-            nombreFuncion : `multiValidation()`,
+            nombreFuncion : `singleValidation()`,
             value         : singleValue,
             funcion       : singleValidation,
             hook          : setSingleValue,
