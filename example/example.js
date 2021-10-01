@@ -51,7 +51,8 @@ export default () => {
             value         : checValue,
             funcion       : validationCheckBox,
             hook          : setChecValue,
-            aplyParse     : true
+            aplyParse     : false,
+            htmlCheckBox  : true,
         },
         {
             nombreFuncion : `textValidate('sdsdsd')`,
@@ -160,6 +161,42 @@ export default () => {
         }
     ]
 
+    const pruebaSwitch = data => {
+        let { value, hook, aplyParse, htmlCheckBox } = data;
+        let newComponent = {}
+        switch ( true ) {
+            case aplyParse    :
+                newComponent = (
+                    <textarea
+                        value    = { JSON.stringify( value ) }
+                        onChange = { e => hook( JSON.parse( e.target.value ) ) }
+                    />
+                )
+            break;
+            case htmlCheckBox :
+                newComponent = (
+                    <input
+                        type     = "checkbox"
+                        value    = { value[1] }
+                        onChange = { e => {
+                            let newValue = JSON.parse( e.target.value )
+                            return hook( { 1 : !newValue } )
+                        } }
+                    />
+                )
+            break;
+            default:
+                newComponent = (
+                    <input
+                        value    = { value }
+                        onChange = { e => hook( e.target.value ) }
+                    />
+                )
+            break;
+        }
+        return newComponent
+    }
+
     return (
         <table>
             <thead>
@@ -172,19 +209,18 @@ export default () => {
             <tbody>
                 {
                     arreglodedatos.map( (data, index) =>{
-                        let { funcion, value, nombreFuncion, hook, aplyParse } = data;
+
+                        let { funcion, value, nombreFuncion } = data;
+
                         return(
                             <tr key = {index}>
                                 <td className ="content-td-nombre"> { nombreFuncion } </td>
                                 <td className ="content-td-parametro">
                                     {
-                                        aplyParse ?
-                                        <textarea value = { JSON.stringify( value ) } onChange = { e => hook(JSON.parse(e.target.value))} />
-                                        :
-                                        <input value = {  value } onChange = { e => hook( e.target.value ) } />
+                                        pruebaSwitch( data )
                                     }
                                 </td>
-                                <td className ={`content-td-funcion-${ funcion( value ).status}`}><div>{ JSON.stringify( funcion( value ) ) } </div></td>
+                                <td className ={`content-td-funcion-${ funcion( value ).status }` }><div>{ JSON.stringify( funcion( value ) ) } </div></td>
                             </tr>
                         )
                     } )
