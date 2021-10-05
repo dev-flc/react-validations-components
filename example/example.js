@@ -46,7 +46,7 @@ export default () => {
             hook          : setNumValue,
             aplyParse     : false
         },
-        { /* PENDIENTE HOOK FIXME: */
+        {
             nombreFuncion : `validationCheckBox({ 1 : true })`,
             value         : checValue,
             funcion       : validationCheckBox,
@@ -103,12 +103,13 @@ export default () => {
             hook          : setComboValidate,
             aplyParse     : false
         },
-        { /* FIXME: Revisar como regresar boolean */
+        {
             nombreFuncion : `radioButtonValidate( true )`,
             value         : radioButtonValidateValue,
             funcion       : radioButtonValidate,
             hook          : setRadioButtonValidate,
-            aplyParse     : false
+            aplyParse     : false,
+            htmlRadio     : true
         },
         { /* FIXME: Revisar como mandarle diferentes hooks */
             nombreFuncion : `validationDateRFC( 'XXXX920804LFP', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' )`,
@@ -162,7 +163,7 @@ export default () => {
     ]
 
     const pruebaSwitch = data => {
-        let { value, hook, aplyParse, htmlCheckBox } = data;
+        let { value, hook, aplyParse, htmlCheckBox, htmlRadio } = data;
         let newComponent = {}
         switch ( true ) {
             case aplyParse    :
@@ -176,13 +177,29 @@ export default () => {
             case htmlCheckBox :
                 newComponent = (
                     <input
+                        checked  = { value[ 1 ] }
                         type     = "checkbox"
-                        value    = { value[1] }
-                        onChange = { e => {
-                            let newValue = JSON.parse( e.target.value )
-                            return hook( { 1 : !newValue } )
-                        } }
+                        value    = { !value[ 1 ] }
+                        onChange = { e => hook( { 1 : JSON.parse( e.target.value ) } ) }
                     />
+                )
+            break;
+            case htmlRadio    :
+                newComponent = (
+                    <div>
+                        <input
+                            name     = "radio_id"
+                            type     = "radio"
+                            value    = { value }
+                            onChange = { e => hook( e.target.value ) }
+                        />
+                        <input
+                            name     = "radio_id"
+                            type     = "radio"
+                            value    = { !value }
+                            onChange = { e => hook( true ) }
+                        />
+                    </div>
                 )
             break;
             default:
