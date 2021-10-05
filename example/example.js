@@ -188,17 +188,21 @@ export default () => {
                 newComponent = (
                     <div>
                         <input
+                            checked  = { JSON.parse( value ) }
                             name     = "radio_id"
                             type     = "radio"
                             value    = { value }
-                            onChange = { e => hook( e.target.value ) }
+                            onChange = { () => hook( true ) }
                         />
+                        <label> { 'Activa true' } </label>
+
                         <input
                             name     = "radio_id"
                             type     = "radio"
                             value    = { !value }
-                            onChange = { e => hook( true ) }
+                            onChange = { e => hook( e.target.value ) }
                         />
+                        <label> { 'Activa false' } </label>
                     </div>
                 )
             break;
