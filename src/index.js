@@ -1,6 +1,4 @@
-
 export {
-
     requiredData,
     textValidate,
     numValidate,
