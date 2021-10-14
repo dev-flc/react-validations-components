@@ -44,29 +44,33 @@ $ yarn add react-validations-components
 
 To use, import the different functions exposed.
 
-**Description Parameters**
+**Description of individual functions parameters**
 
 |  name     | Description                        |
 | ----------|------------------------------------|
 | value     | data value                         |
-| name      | name to show in the error message  |
 | varError  | variable error name                |
-| focus     | component identifier               |
+| id        | component identifier               |
+| title     | component title                    |
 
 
 **Description Parameter Type**
 
 |  value            | Description                          |
 | ------------------|--------------------------------------|
+| R                 | data validation required             |
 | T                 | validation of type text              |
 | N                 | validation of type number            |
 | TN                | validation of type text and number   |
 | RFC               | validation of type RFC               |
+| RFC_CLAVE         | validation of type RFC               |
 | RFC_DATE          | validation of type RFC and date      |
 | EMAIL             | validation of type email             |
 | COMMON            | validation of type common            |
 | C                 | validation of type combo             |
 | RB                | validation of type Radio button      |
+| DATE              | validation of type date              |
+| CHECK             | validation of type check             |
 | TEXT_AREA_SPECIAL | validation of type tex area multi    |
 | SPECIAL_CHARACTER | validation of type special character |
 
@@ -79,68 +83,184 @@ import {
     numValidate,
     textNumberValidate,
     rfcValidate,
+    rfcValidateClave,
     emailValidate,
+    commonValidate,
     requiredData,
     comboValidate,
     radioButtonValidate,
     validationDateRFC,
+    dateValidateFormat,
+    validationDateRFC,
+    validationCheckBox,
     textAreSpecialValidate,
     specialCharacterInValidate
 } from 'react-validations-components'
 
 /* COMPLETE EXAMPLE */
 
-// Parameters
-let value    = "VALIDATION TYPE TEXT";
-let name     = "NAME";
-let varError = "errorText";
-let id       = "ID_COMPONENT"
-
-console.log( "TEXT >>> ", textValidate( value, name ,varError, id ) )
-
+console.log("textValidate", textValidate( "hola", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("textValidate", textValidate( "hola" ))
 // Result Successful = { status : true }
 
-// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", id : "ID_COMPONENT"}
+console.log( "textValidate", textValidate( "#$%", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO, no es válido, ingresa solo letras.', varError: 'errorText', id: 'ID_COMPONENT'}
 
-/* BASIC EXAMPLES */
-
-console.log("NUM >>> ", numValidate( 1 ) )
-// Result  = { status : true }
-
-console.log("TEXT_NUM >>> ", textNumberValidate( "sdsd77" ) )
-// Result successful  = { status : true }
-
-console.log("RFC >>> ", rfcValidate( "XXXX090909XX0" ) )
-// Result successful  = { status : true }
+console.log( "textValidate", textValidate( "#$%", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras.', varError: 'errorText', id: 'ID_COMPONENT'}
 
 
-console.log("EMAIL >>> ", emailValidate( "fer.l.c@gmail.com" ) )
-// Result successful  = { status : true }
+
+console.log("numValidate", numValidate( "123", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("numValidate", numValidate( 123 ))
+// Result Successful = { status : true }
+
+console.log( "numValidate", numValidate( "qwerty", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido, ingresa solo números.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "numValidate", numValidate( "qwerty", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido, ingresa solo números.', varError: 'errorText', id: 'ID_COMPONENT'}
 
 
-console.log("REQUIRED >>> ", requiredData( "df" ) )
-// Result successful  = { status : true }
+
+console.log("textNumberValidate", textNumberValidate( "qwerty123qwerty", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("textNumberValidate", textNumberValidate( "qwerty123qwerty" ))
+// Result Successful = { status : true }
+
+console.log( "textNumberValidate", textNumberValidate( "13as!#$%", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "textNumberValidate", textNumberValidate( "13as!#$%", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
 
 
-console.log("COMBO >>> ", comboValidate( "1" ) )
-// Result successful  = { status : true }
+
+console.log("rfcValidate", rfcValidate( "XXXX920804XX1", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("rfcValidate", rfcValidate( "XXXX920804XX1" ))
+// Result Successful = { status : true }
+
+console.log( "rfcValidate", rfcValidate( "XX920804", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "rfcValidate", rfcValidate( "XX920804", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
 
 
-console.log("RADIO >>> ", radioButtonValidate( false ) )
-// Result successful  = { status : true }
 
-console.log("DATE_TO_RFC",   validationDateRFC( 'XXXX920804XX1', '2092-08-04', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' ) );
-// Result successful  = { status : true }
+console.log("rfcValidateClave", rfcValidateClave( "XXXX920804XX1", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("rfcValidateClave", rfcValidateClave( "XXXX920804XX1" ))
+// Result Successful = { status : true }
 
+console.log( "rfcValidateClave", rfcValidateClave( "XX920804", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
 
-console.log( "SPECIAL_CHA >>>", textAreSpecialValidate( ":;#/()&\-_*,." ) );
-// Result successful  = { status : true }
-
-
-console.log( "SPECIAL_IN >>>",  specialCharacterInValidate( ":;#/()&\-_*,." ) );
-// Result successful  = { status : true }
+console.log( "rfcValidateClave", rfcValidateClave( "XX920804", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
 
 
+
+console.log("emailValidate", emailValidate( "fer.l.c@gmail.com", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("emailValidate", emailValidate( "fer.l.c@gmail.com" ))
+// Result Successful = { status : true }
+
+console.log( "emailValidate", emailValidate( "fer.@", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "emailValidate", emailValidate( "fer.@", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("textAreSpecialValidate", textAreSpecialValidate( "$%&", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("textAreSpecialValidate", textAreSpecialValidate( "$%&" ))
+// Result Successful = { status : true }
+
+console.log( "textAreSpecialValidate", textAreSpecialValidate( "||°°", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "textAreSpecialValidate", textAreSpecialValidate( "||°°", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("specialCharacterInValidate", specialCharacterInValidate(  ":;#/()&\-_*,.", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("specialCharacterInValidate", specialCharacterInValidate( ":;#/()&\-_*,." ))
+// Result Successful = { status : true }
+
+console.log( "specialCharacterInValidate", specialCharacterInValidate( "||°°", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "specialCharacterInValidate", specialCharacterInValidate( "||°°", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido, ingresa solo letras y números.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("requiredData", requiredData( "Hola", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("requiredData", requiredData( 1 ))
+// Result Successful = { status : true }
+
+console.log( "requiredData", requiredData( "", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "requiredData", requiredData( "", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("comboValidate", comboValidate( "1", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("comboValidate", comboValidate( 1 ))
+// Result Successful = { status : true }
+
+console.log( "comboValidate", comboValidate( -1, "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "comboValidate", comboValidate( -1, "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("radioButtonValidate", radioButtonValidate( false, "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("radioButtonValidate", radioButtonValidate( true ))
+// Result Successful = { status : true }
+
+console.log( "radioButtonValidate", radioButtonValidate( null, "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "radioButtonValidate", radioButtonValidate( "", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("dateValidateFormat", dateValidateFormat( "01/01/1991", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("dateValidateFormat", dateValidateFormat( "01-01-1991" ))
+// Result Successful = { status : true }
+
+console.log( "dateValidateFormat", dateValidateFormat( "01/1991", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "dateValidateFormat", dateValidateFormat( "01-1992", "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato no es válido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("validationCheckBox", validationCheckBox( { 1 : true }, "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("validationCheckBox", validationCheckBox( { 1 : true } ))
+// Result Successful = { status : true }
+
+console.log( "validationCheckBox", validationCheckBox( { 1 : false }, "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error = {status: false, error: 'El dato TITLE_COMPO es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "validationCheckBox", validationCheckBox( { 1 : false }, "errorText", "ID_COMPONENT" ))
+// Result Error = {status: false, error: 'El dato es requerido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
+
+
+console.log("commonValidate", commonValidate( "12314", /^([0-9])*$/, "errorOther", "errorText", "ID_COMPONENT" ))
+console.log("commonValidate", commonValidate( "12314", /^([0-9])*$/ ))
+// Result Successful = { status : true }
+
+console.log("commonValidate", commonValidate( "12314#$%", /^([0-9])*$/, "errorOther", "errorText", "ID_COMPONENT" ))
+// Result Error = status: false, error: 'errorOther', varError: 'errorText', id: 'ID_COMPONENT'}
 ```
 
 To use the advanced functions, import the different functions exposed.
@@ -171,16 +291,9 @@ The following function can identify a type of validation or several TYPE that ca
 
 ```js
 
-console.log( singleValidation( { type : [ "R", "T" ], value : "value", title : "title" , varError : "varError", id : "focus" } ) )
+console.log( singleValidation( { type : [ "R", "T" ], value : 'QWE', varError : "fer", id : "R", title : "titulo R" } ) )
 // Result successful  = { status : true }
-
-// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
-
-console.log( singleValidation( { type : "T", value : "value", title : "title" , varError : "varError", id : "focus" } ) )
-// Result successful  = { status : true }
-
-// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
-
+// Result Error= {status: false, error: 'El dato titulo R es requerido.', varError: 'fer', id: 'R'}
 
 ```
 **Example function munti**
@@ -188,31 +301,43 @@ console.log( singleValidation( { type : "T", value : "value", title : "title" , 
 The next function is composed of an array of objects, which have the same properties as the previous functions.
 
 ```js
-let DATA = [
-        { type : [ "R","N" ],   value : "1212",          title : "example1" , varError : "fer",     id : "errorrorooror" },
-        { type : [ "R","T" ],   value : 'we',            title : "example2" , varError : "fer",     id : "errorrorooror" },
-        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc1", id : "rfc1" },
-        { type : [ "R","RFC" ], value : 'XXXX920804XX1', title : "R.F.C." ,      varError : "rfc2", id : "rfc2" },
-        { type : "T",           value : 'q',             title : "example3" , varError : "fer",     id : "errorrorooror" },
-        { type : "T",           value : 'example',       title : "example4" , varError : "fer",     id : "errorrorooror" },
-        {
-            type         : [ 'R', 'RFC', 'RFC_DATE' ],
-            value        : 'XXXX920804XX1',        // value rfc
-            valueDate    : '2092-08-04',
-            title        : 'R.F.C.',               // title rfc
-            titleDate    : 'Fecha de nacimiento',
-            varError     : 'varErrorRFC',         // varError rfc
-            varErrorDate : 'varErrorDate',
-            id           : 'focusRFC',            //focusRFC
-            focusDate    : 'focusDate',
-        }
-    ];
+const DATA = [
+    { type : [ "R"    ],               value : 'QWE',                  varError : "fer",       id: "R",                 title: "titulo R" },
+    { type : [ "N"    ],               value : '123',                  varError : "fer",       id: "N",                 title: "titulo N" },
+    { type : [ "CHECK" ],              value : { 1:true, 2:false },    varError : "fer",       id: "CHECK",             title: "titulo CHECK"},
+    { type : [ "R","N"    ],           value : '1234',                 varError : "fer",       id: "[R, N]",            title: "titulo R-N"},
+    { type : [ "R","RFC"  ],           value : 'XXXX920804LP2',        varError : "rfc1",      id: "RFC",               title: "titulo RFC"},
+    { type : [ "R","RFC_CLAVE"  ],     value : 'XXXX920801',           varError : "rfc clave", id: "RFC_CLAVE",         title: "titulo RFC_CLAVE"},
+    { type : [ "R","DATE" ],           value : '09-12-1992',           varError : "fecha1",    id: "DATE 09-12-1992",   title: "titulo DATE 1"},
+    { type : [ "R","DATE" ],           value : '09/12/1992',           varError : "fecha2",    id: "DATE 09/12/1992",   title: "titulo DATE 2"},
+    { type : [ "R","DATE" ],           value : '09.12.1992',           varError : "fecha3",    id: "DATE 09.12.1992",   title: "titulo DATE 3"},
+    { type : "T",                      value : 'example',              varError : "fer",       id: "T",                 title: "titulo T"},
+    { type : "TEXT_AREA_SPECIAL",      value : 'a1,.',                 varError : "fer",       id: "text_area_special", title: "titulo T_A_SPECIAL"},
+    { type : [ "R",
+                "SPECIAL_CHARACTER" ], value : 'b2;:',                 varError : "fer",       id: "special_character", title: "titulo S_CH"},
+    {
+        type         : [ 'R', 'RFC', 'RFC_DATE' ],
+        value        : 'XXXX920804XX1',       // value rfc
+        valueDate    : '04-08-1992',
+        titleRFC     : 'R.F.C.',              // title rfc
+        titleDate    : 'Fecha de nacimiento', // title Date
+        varError     : 'varErrorRFC',         // varError rfc
+        varErrorDate : 'varErrorDate',
+        id           : 'focusRFC',            //focusRFC
+        focusDate    : 'focusDate',
+    },
+    { type : "COMMON", value : 'sd', expRegular : /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/, varError : "fer", id : "errorrorooror", message : 'wshbehfbwejf' }
+
+];
+
 
 console.log( multiValidation( DATA ) )
 
 // Result successful  = { status : true }
 
-// Result Error= { status : false, error : "El dato NAME no es válido, ingresa solo letras.", varError : "errorText", focus : "ID_COMPONENT"}
+/** Returns one error at a time */
+
+// Result Error= {status: false, error: 'El dato titulo R es requerido.', varError: 'fer', id: 'R'}
 
 ```
 

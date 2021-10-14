@@ -215,22 +215,8 @@ export default () => {
                 )
             break;
         }
-        //console.log("textValidate", textValidate( "hola#$%", "soy", "soy_id", "Isco" ))
-        //console.log("numValidate",numValidate( "asd", "soy", "soy_id", "Isco" ))
-        //console.log("textNumberValidate", textNumberValidate( "13as!#$%", "soy", "soy_id", "Isco" ))
-        //console.log("rfcValidate", rfcValidate( "XXX", "soy", "soy_id", "Isco" ))
-        //console.log("rfcValidateClave", rfcValidateClave( "XXX", "soy", "soy_id", "Isco" ))
-        //console.log("emailValidate", emailValidate( "123@@", "soy", "soy_id", "Isco" ))
-        //console.log("commonValidate", commonValidate( "123144$%&", /^([0-9])*$/, "soy", "", "soy_id", "Isco" ))
-        //console.log("textAreSpecialValidate", textAreSpecialValidate( "!°°", "soy", "soy_id", "Isco" ))
-        //console.log("specialCharacterInValidate", specialCharacterInValidate( "!°°", "soy", "soy_id", "Isco" ))
-        //console.log("specialCharacterInValidate", specialCharacterInValidate( "!°°", "soy", "soy_id", "Isco" ))
-        //console.log("requiredData", requiredData( "", "soy", "soy_id", "Isco" ))
-        //console.log("comboValidate", comboValidate( -1, "soy", "soy_id", "Isco" ))
-        //console.log("radioButtonValidate", radioButtonValidate( "", "soy", "soy_id", "Isco" ))
-        //console.log("dateValidateFormat", dateValidateFormat( "'/02/1991", "soy", "soy_id", "Isco" ))
-        //console.log("validationCheckBox", validationCheckBox( { 1 : false }, "soy", "soy_id", "Isco" ))
-        //console.log("singleValidation", singleValidation( DATA[ 0 ] ));
+
+        console.log("singleValidation", singleValidation( DATA[ 0 ] ));
         //console.log("multiValidation", multiValidation( DATA ));
 
         return newComponent

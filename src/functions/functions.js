@@ -47,7 +47,7 @@ export const emailValidate = ( value = "", varError = "", id = "", title = "" ) 
     `El dato ${ title } no es válido.` ), varError, id }
 }
 
-export const commonValidate = ( value = "", expRegular = "", varError = "", message = "", id = "", title = "" ) => {
+export const commonValidate = ( value = "", expRegular = "", varError = "", message = "", id = "" ) => {
     return RegExp(expRegular).test(value)
     ? { status: true }
     : { status: false, error : message, varError, id }
