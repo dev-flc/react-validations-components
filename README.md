@@ -271,11 +271,9 @@ To use the advanced functions, import the different functions exposed.
 | ----------|------------------------------------|----------------------------------|
 | type      | type of validation                 | String, Array                    |
 | value     | data value                         | Number, Bolean, String, Floating |
-| title     | name to show in the error message  | String                           |
 | varError  | variable error name                | String                           |
-| focus     | component identifier               | String                           |
-
-
+| id        | component identifier               | String                           |
+| title     | name to show in the error message  | String                           |
 
 ```js
 import {
