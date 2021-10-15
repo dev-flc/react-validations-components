@@ -1,21 +1,20 @@
 import React,  { useState } from 'react';
 
+import { DATA } from './dumys.js'
+
 /*  Development */
+/* import {
+    rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
+ } from './../src/index.js'; */
+
+/* Production */
 import {
     rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
- } from './../src/index.js';
-
- import { DATA } from './dumys.js'
-
-/* Production */
-/*
-import {
-    rfcValidate, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
-    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
-} from './../dist/index.js'*/
+} from './../dist/index.js'
 
 export default () => {
 

@@ -1,6 +1,6 @@
 {
   "name": "react-validations-components",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "validation",
   "main": "dist/index.js",
   "scripts": {
@@ -27,18 +27,18 @@
   "license": "MIT",
   "homepage": "https://github.com/fercho0/react-validations-components#readme",
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.4.0"
+    "react": "16.3.2",
+    "react-dom": "16.4.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-cli": "6.26.0",
     "babel-loader": "7.1.4",
-    "babel-polyfill": "^6.26.0",
+    "babel-polyfill": "6.26.0",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-2": "6.24.1",
     "clean-webpack-plugin": "0.1.19",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "3.2.0",
     "webpack": "4.8.1",
     "webpack-cli": "2.1.3",
     "webpack-dev-server": "3.1.4",
