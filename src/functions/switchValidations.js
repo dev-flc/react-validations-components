@@ -19,35 +19,35 @@ import {
 
 export const SWITCH_VALIDATIONS = data => {
 
-    let { value, type, varError, expRegular, message, id, valueDate,
-        titleDate, varErrorDate, focusDate, titleRFC } = data;
+    let { value, type, varError, expRegular, message, id, valueDate, titleRFC,
+        titleDate, varErrorDate, focusDate, title } = data;
 
     let result = { status: false, error: "error" };
 
     switch ( type ) {
 
         case "R": // Requerido
-            result = requiredData( value, varError, id );
+            result = requiredData( value, varError, id, title );
             break;
 
         case "T": // Texto
-            result = textValidate( value, varError, id )
+            result = textValidate( value, varError, id, title )
             break;
 
         case "N": // Numero
-            result = numValidate( value, varError, id );
+            result = numValidate( value, varError, id, title );
             break;
 
         case "TN": // Texto y Numero
-            result = textNumberValidate( value, varError, id );
+            result = textNumberValidate( value, varError, id, title );
             break;
 
         case "RFC": // RFC
-            result = rfcValidate( value, varError, id );
+            result = rfcValidate( value, varError, id, title, title );
             break;
 
         case "RFC_CLAVE": // RFC sin cave
-            result = rfcValidateClave( value, varError, id );
+            result = rfcValidateClave( value, varError, id, title );
             break;
 
         case "RFC_DATE": // RFC VS Fecha de nacimiento
@@ -55,35 +55,35 @@ export const SWITCH_VALIDATIONS = data => {
             break;
 
         case "EMAIL": // Email
-            result = emailValidate( value, varError, id );
+            result = emailValidate( value, varError, id, title );
             break;
 
         case "COMMON": // Comun
-            result = commonValidate( value, expRegular, varError, message, id );
+            result = commonValidate( value, expRegular, varError, message, id, title );
             break;
 
         case "C": // Combos
-            result = comboValidate( value, varError, id );
+            result = comboValidate( value, varError, id, title );
             break;
 
         case "RB": // Redio Buntons
-            result = radioButtonValidate( value, varError, id );
+            result = radioButtonValidate( value, varError, id, title );
             break;
 
         case "DATE": // Formato de fecha
-            result = dateValidateFormat( value, varError, id );
+            result = dateValidateFormat( value, varError, id, title );
             break;
 
         case "CHECK": // Checkbox
-            result = validationCheckBox( value, varError, id );
+            result = validationCheckBox( value, varError, id, title );
             break;
 
         case "TEXT_AREA_SPECIAL": // Carater especial multilinea
-            result = textAreSpecialValidate( value, varError, id );
+            result = textAreSpecialValidate( value, varError, id, title );
             break;
 
         case "SPECIAL_CHARACTER": // Carater especial
-            result = specialCharacterInValidate( value, varError, id );
+            result = specialCharacterInValidate( value, varError, id, title );
             break;
 
         default:

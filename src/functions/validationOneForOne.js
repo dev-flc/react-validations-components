@@ -6,7 +6,7 @@ const isArray  = ( data ) => Array.isArray( data );
 export let singleValidation = data => {
 
     let { value, type, varError, expRegular, message, id, valueDate, titleRFC,
-        titleDate,  varErrorDate,  focusDate } = data;
+        titleDate, varErrorDate, focusDate, title } = data;
 
     let result = { status : false, error : "El valor de type no es un array o un string", type };
 
@@ -15,7 +15,7 @@ export let singleValidation = data => {
         for ( let newType of type ) {
 
             let resultMulty = SWITCH_VALIDATIONS( { value, type : newType, titleRFC, varError, expRegular, message, id, valueDate,
-                titleDate, varErrorDate, focusDate  } );
+                titleDate, varErrorDate, focusDate, title  } );
 
             if ( resultMulty.status === false ) {
                 result = resultMulty;
@@ -40,7 +40,7 @@ export let multiValidation = data => {
     for ( let newData of data ) {
 
         let { value, type, varError, expRegular, message, id, valueDate, titleRFC,
-            titleDate, varErrorDate, focusDate } = newData;
+            titleDate, varErrorDate, focusDate, title } = newData;
 
         let newResult = { status : false, error : "El valor de type no es un array o un string", type }
 
@@ -48,7 +48,7 @@ export let multiValidation = data => {
 
             for ( let newType of type ) {
                 let resultMulty = SWITCH_VALIDATIONS( { value, type : newType, titleRFC, varError, expRegular, message, id, valueDate,
-                    titleDate, varErrorDate, focusDate } );
+                    titleDate, varErrorDate, focusDate, title } );
 
                 if ( resultMulty.status === false ) {
                     newResult = resultMulty;
