@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:fercho0/react-validations-components.gitt"
+    "url": "git+ssh://git@github.com:fercho0/react-validations-components.git"
   },
   "bugs": {
     "url": "https://github.com/fercho0/react-validations-components"

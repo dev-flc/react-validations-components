@@ -163,7 +163,9 @@ export default () => {
 
     const pruebaSwitch = data => {
         let { value, hook, aplyParse, htmlCheckBox, htmlRadio } = data;
+
         let newComponent = {}
+
         switch ( true ) {
             case aplyParse    :
                 newComponent = (
@@ -215,9 +217,6 @@ export default () => {
             break;
         }
 
-        console.log("singleValidation", singleValidation( DATA[ 0 ] ));
-        //console.log("multiValidation", multiValidation( DATA ));
-
         return newComponent
     }
 
@@ -232,7 +231,7 @@ export default () => {
             </thead>
             <tbody>
                 {
-                    arreglodedatos.map( (data, index) =>{
+                    arreglodedatos.map( (data, index) => {
 
                         let { funcion, value, nombreFuncion } = data;
 

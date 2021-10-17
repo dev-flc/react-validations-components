@@ -36,6 +36,12 @@ Object.defineProperty(exports, 'rfcValidate', {
         return _functions.rfcValidate;
     }
 });
+Object.defineProperty(exports, 'rfcValidateClave', {
+    enumerable: true,
+    get: function get() {
+        return _functions.rfcValidateClave;
+    }
+});
 Object.defineProperty(exports, 'emailValidate', {
     enumerable: true,
     get: function get() {
