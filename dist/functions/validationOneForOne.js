@@ -25,7 +25,8 @@ var singleValidation = exports.singleValidation = function singleValidation(data
         titleRFC = data.titleRFC,
         titleDate = data.titleDate,
         varErrorDate = data.varErrorDate,
-        focusDate = data.focusDate;
+        focusDate = data.focusDate,
+        title = data.title;
 
 
     var result = { status: false, error: "El valor de type no es un array o un string", type: type };
@@ -42,7 +43,7 @@ var singleValidation = exports.singleValidation = function singleValidation(data
 
 
                 var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, titleRFC: titleRFC, varError: varError, expRegular: expRegular, message: message, id: id, valueDate: valueDate,
-                    titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
+                    titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate, title: title });
 
                 if (resultMulty.status === false) {
                     result = resultMulty;
@@ -73,7 +74,6 @@ var singleValidation = exports.singleValidation = function singleValidation(data
 };
 
 var multiValidation = exports.multiValidation = function multiValidation(data) {
-
     var result = { status: true };
 
     var _iteratorNormalCompletion2 = true;
@@ -93,7 +93,8 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                 titleRFC = newData.titleRFC,
                 titleDate = newData.titleDate,
                 varErrorDate = newData.varErrorDate,
-                focusDate = newData.focusDate;
+                focusDate = newData.focusDate,
+                title = newData.title;
 
 
             var newResult = { status: false, error: "El valor de type no es un array o un string", type: type };
@@ -109,7 +110,7 @@ var multiValidation = exports.multiValidation = function multiValidation(data) {
                         var newType = _step3.value;
 
                         var resultMulty = (0, _switchValidations.SWITCH_VALIDATIONS)({ value: value, type: newType, titleRFC: titleRFC, varError: varError, expRegular: expRegular, message: message, id: id, valueDate: valueDate,
-                            titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate });
+                            titleDate: titleDate, varErrorDate: varErrorDate, focusDate: focusDate, title: title });
 
                         if (resultMulty.status === false) {
                             newResult = resultMulty;
