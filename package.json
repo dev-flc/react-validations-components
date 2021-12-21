@@ -27,8 +27,8 @@
   "license": "MIT",
   "homepage": "https://github.com/fercho0/react-validations-components#readme",
   "dependencies": {
-    "react": "16.3.2",
-    "react-dom": "16.4.0"
+    "react": "16.8.0",
+    "react-dom": "16.8.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
