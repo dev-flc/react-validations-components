@@ -101,6 +101,11 @@ var SWITCH_VALIDATIONS = exports.SWITCH_VALIDATIONS = function SWITCH_VALIDATION
             result = (0, _functions.specialCharacterInValidate)(value, varError, id, title);
             break;
 
+        case "CURP":
+            // CURP
+            result = (0, _functions.curpValidate)(value, varError, id, title);
+            break;
+
         default:
             console.log("El tipo de validación no existe :(", type);
             break;

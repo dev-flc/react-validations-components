@@ -96,6 +96,12 @@ Object.defineProperty(exports, 'specialCharacterInValidate', {
         return _functions.specialCharacterInValidate;
     }
 });
+Object.defineProperty(exports, 'curpValidate', {
+    enumerable: true,
+    get: function get() {
+        return _functions.curpValidate;
+    }
+});
 
 var _validationOneForOne = require('./functions/validationOneForOne.js');
 

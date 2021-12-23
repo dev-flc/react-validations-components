@@ -14,3 +14,4 @@ var TEXT_NUMBER = exports.TEXT_NUMBER = /^[a-z ñáäéëíïóöúüÑÁÄÉË�
 var FORMAT_DATE = exports.FORMAT_DATE = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
 var TEXT_AREA_SPECIAL = exports.TEXT_AREA_SPECIAL = /^([a-z ñáäéëíïóöúüÑÁÄÉËÍÏÓÖÚÜ A-Z0-9 ‘,\-:;\\#\/()´¨&"_*.%¿?$¡!@+¨]*$)|(\n[a-z ñáäéëíïóöúüÑÁÄÉËÍÏÓÖÚÜ A-Z0-9 ‘,\-:;\\#\/()´¨&"_*.%¿?$¡!@+¨]{1,}$)/;
 var SPECIAL_CHARACTER = exports.SPECIAL_CHARACTER = /^([a-z ñáäéëíïóöúüÑÁÄÉËÍÏÓÖÚÜ A-Z0-9 ‘,\-:;\\#\/()´¨&"\_*.%¿?$¡!@+¨]*$)/;
+var CURP = exports.CURP = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/;

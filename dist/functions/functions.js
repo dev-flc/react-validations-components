@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.validationCheckBox = exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.specialCharacterInValidate = exports.textAreSpecialValidate = exports.commonValidate = exports.emailValidate = exports.rfcValidateClave = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
+exports.curpValidate = exports.validationCheckBox = exports.validationDateRFC = exports.dateValidateFormat = exports.radioButtonValidate = exports.comboValidate = exports.requiredData = exports.specialCharacterInValidate = exports.textAreSpecialValidate = exports.commonValidate = exports.emailValidate = exports.rfcValidateClave = exports.rfcValidate = exports.textNumberValidate = exports.numValidate = exports.textValidate = undefined;
 
 var _expressions = require('./../util/expressions.js');
 
@@ -27,7 +27,7 @@ var textValidate = exports.textValidate = function textValidate() {
     var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var title = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa solo letras.', 'El dato ' + title + ', no es v\xE1lido, ingresa solo letras.'), varError: varError, id: id };
+    return RegExp(_expressions.TEXT).test(value.trim()) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa s\xF3lo letras.', 'El dato ' + title + ', no es v\xE1lido, ingresa s\xF3lo letras.'), varError: varError, id: id };
 };
 
 var numValidate = exports.numValidate = function numValidate() {
@@ -36,7 +36,7 @@ var numValidate = exports.numValidate = function numValidate() {
     var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var title = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa solo n\xFAmeros.', 'El dato ' + title + ' no es v\xE1lido, ingresa solo n\xFAmeros.'), varError: varError, id: id };
+    return RegExp(_expressions.NUMBER).test(value) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa s\xF3lo n\xFAmeros.', 'El dato ' + title + ' no es v\xE1lido, ingresa s\xF3lo n\xFAmeros.'), varError: varError, id: id };
 };
 
 var textNumberValidate = exports.textNumberValidate = function textNumberValidate() {
@@ -45,7 +45,7 @@ var textNumberValidate = exports.textNumberValidate = function textNumberValidat
     var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
     var title = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
 
-    return RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa solo letras y n\xFAmeros.', 'El dato ' + title + ' no es v\xE1lido, ingresa solo letras y n\xFAmeros.'), varError: varError, id: id };
+    return RegExp(_expressions.TEXT_NUMBER).test(value) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido, ingresa s\xF3lo letras y n\xFAmeros.', 'El dato ' + title + ' no es v\xE1lido, ingresa s\xF3lo letras y n\xFAmeros.'), varError: varError, id: id };
 };
 
 var rfcValidate = exports.rfcValidate = function rfcValidate() {
@@ -219,4 +219,13 @@ var validationCheckBox = exports.validationCheckBox = function validationCheckBo
 
         return { status: false, error: validaTitle(title, 'El dato es requerido.', 'El dato ' + title + ' es requerido.'), varError: varError, id: id };
     }
+};
+
+var curpValidate = exports.curpValidate = function curpValidate() {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var varError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    var title = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+
+    return RegExp(_expressions.CURP).test(value) ? { status: true } : { status: false, error: validaTitle(title, 'El dato no es v\xE1lido.', 'El dato ' + title + ' no es v\xE1lido.'), varError: varError, id: id };
 };
