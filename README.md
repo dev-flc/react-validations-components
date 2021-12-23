@@ -73,6 +73,7 @@ To use, import the different functions exposed.
 | CHECK             | validation of type check             |
 | TEXT_AREA_SPECIAL | validation of type tex area multi    |
 | SPECIAL_CHARACTER | validation of type special character |
+| CURP              | validation of type CURP              |
 
 ----------------------------------------------------------------------
 
@@ -94,7 +95,8 @@ import {
     validationDateRFC,
     validationCheckBox,
     textAreSpecialValidate,
-    specialCharacterInValidate
+    specialCharacterInValidate,
+    curpValidate
 } from 'react-validations-components'
 
 /* COMPLETE EXAMPLE */
@@ -261,6 +263,12 @@ console.log("commonValidate", commonValidate( "12314", /^([0-9])*$/ ))
 
 console.log("commonValidate", commonValidate( "12314#$%", /^([0-9])*$/, "errorOther", "errorText", "ID_COMPONENT" ))
 // Result Error = status: false, error: 'errorOther', varError: 'errorText', id: 'ID_COMPONENT'}
+
+console.log( "curpValidate", curpValidate( "PXDO560626MNELRN09", "errorText", "ID_COMPONENT" ))
+// Result Successful = { status : true }
+console.log( "curpValidate", curpValidate( "PXDOA60626MNELRNAA", "errorText", "ID_COMPONENT" ))
+//Result Error =  {status: false, error: 'El dato no es válido.', varError: 'errorText', id: 'ID_COMPONENT'}
+
 ```
 
 To use the advanced functions, import the different functions exposed.
@@ -324,6 +332,7 @@ const DATA = [
         id           : 'focusRFC',            //focusRFC
         focusDate    : 'focusDate',
     },
+    { type : ["R","CURP"],      value : 'PXDO560626MNELRN09',           varError : "curp",             id: "text_curp",         title: "titulo_curp"},
     { type : "COMMON", value : 'sd', expRegular : /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/, varError : "fer", id : "errorrorooror", message : 'wshbehfbwejf' }
 
 ];

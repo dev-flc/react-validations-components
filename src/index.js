@@ -13,7 +13,8 @@ export {
     dateValidateFormat,
     validationCheckBox,
     textAreSpecialValidate,
-    specialCharacterInValidate
+    specialCharacterInValidate,
+    curpValidate
 } from './functions/functions.js';
 
 export { singleValidation, multiValidation } from './functions/validationOneForOne.js'
