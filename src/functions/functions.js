@@ -1,4 +1,4 @@
-import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, RFC_CLAVE, FORMAT_DATE, TEXT_AREA_SPECIAL, SPECIAL_CHARACTER }  from "./../util/expressions.js"
+import { EMAIL, TEXT, TEXT_NUMBER, NUMBER, RFC, RFC_CLAVE, FORMAT_DATE, TEXT_AREA_SPECIAL, SPECIAL_CHARACTER, CURP }  from "./../util/expressions.js"
 
 import map     from 'lodash/map';
 import some    from 'lodash/some';
@@ -8,22 +8,22 @@ const validaTitle = ( title, msgEmpty, msg ) => title === "" ? msgEmpty : msg
 export const textValidate = ( value = "", varError = "", id = "", title = "" ) => {
     return RegExp(TEXT).test(value.trim())
     ? { status : true }
-    : { status : false, error : validaTitle( title, `El dato no es válido, ingresa solo letras.`,
-    `El dato ${ title }, no es válido, ingresa solo letras.` ), varError, id }
+    : { status : false, error : validaTitle( title, `El dato no es válido, ingresa sólo letras.`,
+    `El dato ${ title }, no es válido, ingresa sólo letras.` ), varError, id }
 }
 
 export let numValidate = ( value = "", varError = "", id = "", title = "" ) => {
     return RegExp(NUMBER).test(value)
     ? { status : true }
-    : { status : false, error : validaTitle( title, `El dato no es válido, ingresa solo números.`,
-    `El dato ${ title } no es válido, ingresa solo números.`), varError, id }
+    : { status : false, error : validaTitle( title, `El dato no es válido, ingresa sólo números.`,
+    `El dato ${ title } no es válido, ingresa sólo números.`), varError, id }
 }
 
 export const textNumberValidate = ( value = "", varError = "", id = "", title = "" ) => {
     return RegExp(TEXT_NUMBER).test(value)
     ? { status: true }
-    : { status: false, error : validaTitle( title, `El dato no es válido, ingresa solo letras y números.`,
-    `El dato ${ title } no es válido, ingresa solo letras y números.` ), varError, id }
+    : { status: false, error : validaTitle( title, `El dato no es válido, ingresa sólo letras y números.`,
+    `El dato ${ title } no es válido, ingresa sólo letras y números.` ), varError, id }
 }
 
 export const rfcValidate = ( value = "", varError = "", id = "", title = "" ) => {
@@ -160,4 +160,11 @@ export const validationCheckBox  = ( value = {}, varError = "", id = "", title =
         `El dato ${ title } es requerido.`), varError, id }
 
     }
+}
+
+export const curpValidate = ( value = {}, varError = "", id = "", title = "" ) =>{
+    return RegExp(CURP).test(value)
+    ? { status: true }
+    : { status: false, error : validaTitle( title, `El dato no es válido.`,
+    `El dato ${ title } no es válido.`), varError, id }
 }

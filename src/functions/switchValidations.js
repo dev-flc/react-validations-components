@@ -14,7 +14,8 @@ import {
     validationCheckBox,
     validationDateRFC,
     textAreSpecialValidate,
-    specialCharacterInValidate } from './functions.js'
+    specialCharacterInValidate,
+    curpValidate } from './functions.js'
 
 
 export const SWITCH_VALIDATIONS = data => {
@@ -84,6 +85,10 @@ export const SWITCH_VALIDATIONS = data => {
 
         case "SPECIAL_CHARACTER": // Carater especial
             result = specialCharacterInValidate( value, varError, id, title );
+            break;
+
+        case "CURP": // CURP
+            result = curpValidate( value, varError, id, title );
             break;
 
         default:

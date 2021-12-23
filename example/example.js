@@ -3,18 +3,18 @@ import React,  {useState} from 'react';
 import { DATA } from './dumys.js'
 
 /*  Development */
-/* import {
-    rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
-    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
- } from './../src/index.js'; */
-
-/* Production */
 import {
     rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
-    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate
-} from './../dist/index.js'
+    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
+ } from './../src/index.js';
+
+/* Production */
+/* import {
+    rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
+} from './../dist/index.js' */
 
 export default () => {
 
@@ -33,6 +33,7 @@ export default () => {
     const [ commonValidateValue, setCommonValidate ]                         = useState( "hyukjhg", /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/ )
     const [ textAreSpecialValidateValue, setTextAreSpecialValidate ]         = useState( ":;#/()&\-_*,." )
     const [ specialCharacterInValidateValue, setSpecialCharacterInValidate ] = useState( ":;#/()&\-_*,." )
+    const [ curpValue, setCurpValue ]                                        = useState( "PXDO560626MNELRN09" )
 
     const [ multiValue, setMultiValue ]   = useState( DATA );
     const [ singleValue, setSingleValue ] = useState( DATA[3] );
@@ -158,9 +159,15 @@ export default () => {
             funcion       : singleValidation,
             hook          : setSingleValue,
             aplyParse     : true
+        },
+        {
+            nombreFuncion : `curpValidate("PXDO560626MNELRN09")`,
+            value         : curpValue,
+            funcion       : curpValidate,
+            hook          : setCurpValue,
+            aplyParse     : false
         }
     ]
-
     const pruebaSwitch = data => {
         let { value, hook, aplyParse, htmlCheckBox, htmlRadio } = data;
 
