@@ -1,12 +1,13 @@
 {
   "name": "react-validations-components",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "validation",
   "main": "dist/index.js",
   "scripts": {
     "devWin": "SET VERSION_APP=%npm_package_version%& webpack-dev-server --progress  --config webpack.dev.js",
     "dev": "VERSION_APP=$npm_package_version webpack-dev-server --progress  --config webpack.dev.js",
     "build": "VERSION_APP=$npm_package_version npm run clean && babel src -d dist --copy-files",
+    "build:win": "SET VERSION_APP=%npm_package_version%& npm run clean && babel src -d dist --copy-files",
     "clean": "rm -r dist && mkdir dist"
   },
   "repository": {
