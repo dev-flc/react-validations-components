@@ -5,6 +5,7 @@ import {
     numValidate,
     textNumberValidate,
     rfcValidate,
+    rfcValidateGeneric,
     rfcValidateClave,
     emailValidate,
     commonValidate,
@@ -13,6 +14,7 @@ import {
     dateValidateFormat,
     validationCheckBox,
     validationDateRFC,
+    validationDateRFCGeneric,
     textAreSpecialValidate,
     specialCharacterInValidate,
     curpValidate } from './functions.js'
@@ -24,9 +26,9 @@ export const SWITCH_VALIDATIONS = data => {
         titleDate, varErrorDate, focusDate, title } = data;
 
     let result = { status: false, error: "error" };
-
+    
     switch ( type ) {
-
+        
         case "R": // Requerido
             result = requiredData( value, varError, id, title );
             break;
@@ -46,6 +48,10 @@ export const SWITCH_VALIDATIONS = data => {
         case "RFC": // RFC
             result = rfcValidate( value, varError, id, title, title );
             break;
+            
+        case "RFC_GENERIC": // RFC y validacion de RFC generico
+            result = rfcValidateGeneric( value, varError, id, title, title );
+            break;
 
         case "RFC_CLAVE": // RFC sin cave
             result = rfcValidateClave( value, varError, id, title );
@@ -53,6 +59,10 @@ export const SWITCH_VALIDATIONS = data => {
 
         case "RFC_DATE": // RFC VS Fecha de nacimiento
             result = validationDateRFC( value, valueDate, titleRFC, titleDate, varError, varErrorDate, id, focusDate );
+            break;
+
+        case "RFC_DATE_GENERIC": // RFC VS Fecha de nacimiento y validacion de RFC generico
+            result = validationDateRFCGeneric( value, valueDate, titleRFC, titleDate, varError, varErrorDate, id, focusDate );
             break;
 
         case "EMAIL": // Email
