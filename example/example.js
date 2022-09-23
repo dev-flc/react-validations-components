@@ -4,15 +4,15 @@ import { DATA } from './dumys.js'
 
 /*  Development */
 import {
-    rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    rfcValidate, rfcValidateGeneric, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, validationDateRFCGeneric, dateValidateFormat,
     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
  } from './../src/index.js';
 
 /* Production */
 /* import {
-    rfcValidate, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
-    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, dateValidateFormat,
+    rfcValidate, rfcValidateGeneric, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, validationDateRFCGeneric, dateValidateFormat,
     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
 } from './../dist/index.js' */
 
@@ -23,12 +23,14 @@ export default () => {
     const [ textValue, setTextValue ]                                        = useState( 'Hola Mundo' );
     const [ textValueNumberValidate, setTextNumberValidate ]                 = useState( "ñáäéëíïóöúüÑÁÄÉËÍÏÓÖÚÜ" )
     const [ rfcValueValidate, setRfcValueValidate ]                          = useState( "XXXX920804XX1" )
+    const [ rfcValueValidateGeneric, setRfcValueValidateGeneric ]            = useState( "XAXX010101000" ) //-APM-
     const [ rfcValueValidateClave, setRfcValidateClave ]                     = useState( "XXXX920807" )
     const [ emailValueValidate, setEmailValidate ]                           = useState( "fer.l.c@gmail.com" )
     const [ requiredDataValue, setRequiredData ]                             = useState( "aabc" )
     const [ comboValidateValue, setComboValidate ]                           = useState( "1" )
     const [ radioButtonValidateValue, setRadioButtonValidate ]               = useState( true )
     const [ validationDateRFCValue, setValidationDateRFC ]                   = useState( 'XXXX920804LFP', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' )
+    const [ validationDateRFCGenericValue, setValidationDateRFCGeneric ]     = useState( 'XAXX010101000', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' )//-APM-
     const [ dateValidateFormatValue, setSateValidateFormat ]                 = useState( '31/02/1991' )
     const [ commonValidateValue, setCommonValidate ]                         = useState( "hyukjhg", /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/ )
     const [ textAreSpecialValidateValue, setTextAreSpecialValidate ]         = useState( ":;#/()&\-_*,." )
@@ -76,6 +78,13 @@ export default () => {
             aplyParse     : false
         },
         {
+            nombreFuncion : `rfcValidateGeneric( "XAXX010101000" )`,
+            value         : rfcValueValidateGeneric,
+            funcion       : rfcValidateGeneric,
+            hook          : setRfcValueValidateGeneric,
+            aplyParse     : false
+        },
+        {
             nombreFuncion : `rfcValidateClave( "XXXX920804" )`,
             value         : rfcValueValidateClave,
             funcion       : rfcValidateClave,
@@ -116,6 +125,13 @@ export default () => {
             value         : validationDateRFCValue,
             funcion       : validationDateRFC,
             hook          : setValidationDateRFC,
+            aplyParse     : false
+        },
+        {
+            nombreFuncion : `validationDateRFCGeneric( 'XAXX010101000', '04-08-1992', 'R.F.C.', 'Fecha de nacimiento', 'errorRFC', 'errorFecha', 'focusRFC', 'focusDate' )`,
+            value         : validationDateRFCGenericValue,
+            funcion       : validationDateRFCGeneric,
+            hook          : setValidationDateRFCGeneric,
             aplyParse     : false
         },
         {

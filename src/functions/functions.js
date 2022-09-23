@@ -26,6 +26,14 @@ export const textNumberValidate = ( value = "", varError = "", id = "", title = 
     `El dato ${ title } no es válido, ingresa sólo letras y números.` ), varError, id }
 }
 
+export const rfcValidateGeneric = ( value = "", varError = "", id = "", title = "" ) => {
+    let result = { status: true }
+    if (isGenericRFC(value.toLowerCase())){
+        result = rfcValidate(value, varError, id, title);
+    }
+    return result;
+}
+
 export const rfcValidate = ( value = "", varError = "", id = "", title = "" ) => {
     return RegExp(RFC).test(value)
     ? { status: true }
@@ -116,6 +124,18 @@ const formatDateToRFC = date => {
 
     return `${year}${ month }${ day }`;
 
+}
+
+const isGenericRFC = rfc => {
+    return  !(rfc === "xaxx010101000" || rfc === "xexx010101000" || rfc === "axaxx010101000" || rfc === "axexx010101000");
+};
+
+export const validationDateRFCGeneric = ( rfc, date, titleRFC = "", titleDate = "", varErrorRFC = "", varErrorDate = "", focusRFC = "", focusDate = "" ) => {
+    let result = { status : true }
+    if (isGenericRFC(rfc.toLowerCase())) {      
+        result = validationDateRFC(rfc, date, titleRFC, titleDate, varErrorRFC, varErrorDate, focusRFC, focusDate )
+    }
+    return result
 }
 
 export const validationDateRFC = ( rfc, date, titleRFC = "", titleDate = "", varErrorRFC = "", varErrorDate = "", focusRFC = "", focusDate = "" ) => {

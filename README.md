@@ -56,24 +56,26 @@ To use, import the different functions exposed.
 
 **Description Parameter Type**
 
-|  value            | Description                          |
-| ------------------|--------------------------------------|
-| R                 | data validation required             |
-| T                 | validation of type text              |
-| N                 | validation of type number            |
-| TN                | validation of type text and number   |
-| RFC               | validation of type RFC               |
-| RFC_CLAVE         | validation of type RFC               |
-| RFC_DATE          | validation of type RFC and date      |
-| EMAIL             | validation of type email             |
-| COMMON            | validation of type common            |
-| C                 | validation of type combo             |
-| RB                | validation of type Radio button      |
-| DATE              | validation of type date              |
-| CHECK             | validation of type check             |
-| TEXT_AREA_SPECIAL | validation of type tex area multi    |
-| SPECIAL_CHARACTER | validation of type special character |
-| CURP              | validation of type CURP              |
+|  value            | Description                             |
+| ------------------|-----------------------------------------|
+| R                 | data validation required                |
+| T                 | validation of type text                 |
+| N                 | validation of type number               |
+| TN                | validation of type text and number      |
+| RFC               | validation of type RFC                  |
+| RFC_GENERIC       | validation of type RFC Generic          |-APM-
+| RFC_CLAVE         | validation of type RFC                  |
+| RFC_DATE          | validation of type RFC and date         |
+| RFC_DATE_GENERIC  | validation of type RFC Generic and date |-APM-
+| EMAIL             | validation of type email                |
+| COMMON            | validation of type common               |
+| C                 | validation of type combo                |
+| RB                | validation of type Radio button         |
+| DATE              | validation of type date                 |
+| CHECK             | validation of type check                |
+| TEXT_AREA_SPECIAL | validation of type tex area multi       |
+| SPECIAL_CHARACTER | validation of type special character    |
+| CURP              | validation of type CURP                 |
 
 ----------------------------------------------------------------------
 
@@ -84,15 +86,16 @@ import {
     numValidate,
     textNumberValidate,
     rfcValidate,
+    rfcValidateGeneric,
     rfcValidateClave,
     emailValidate,
     commonValidate,
     requiredData,
     comboValidate,
-    radioButtonValidate,
-    validationDateRFC,
+    radioButtonValidate,    
     dateValidateFormat,
     validationDateRFC,
+    validationDateRFCGeneric,
     validationCheckBox,
     textAreSpecialValidate,
     specialCharacterInValidate,
@@ -139,6 +142,10 @@ console.log( "textNumberValidate", textNumberValidate( "13as!#$%", "errorText", 
 
 console.log("rfcValidate", rfcValidate( "XXXX920804XX1", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
 console.log("rfcValidate", rfcValidate( "XXXX920804XX1" ))
+// Result Successful = { status : true }
+
+console.log("rfcValidateGeneric", rfcValidate( "XAXX010101000", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+console.log("rfcValidateGeneric", rfcValidate( "XAXX010101000" ))
 // Result Successful = { status : true }
 
 console.log( "rfcValidate", rfcValidate( "XX920804", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
@@ -313,6 +320,7 @@ const DATA = [
     { type : [ "CHECK" ],              value : { 1:true, 2:false },    varError : "fer",       id: "CHECK",             title: "titulo CHECK"},
     { type : [ "R","N"    ],           value : '1234',                 varError : "fer",       id: "[R, N]",            title: "titulo R-N"},
     { type : [ "R","RFC"  ],           value : 'XXXX920804LP2',        varError : "rfc1",      id: "RFC",               title: "titulo RFC"},
+    { type : [ "R","RFC_GENERIC"  ],   value : 'XAXX010101000',        varError : "rfc2",      id: "RFC_GENERIC",       title: "titulo_RFC_GENERIC"},
     { type : [ "R","RFC_CLAVE"  ],     value : 'XXXX920801',           varError : "rfc clave", id: "RFC_CLAVE",         title: "titulo RFC_CLAVE"},
     { type : [ "R","DATE" ],           value : '09-12-1992',           varError : "fecha1",    id: "DATE 09-12-1992",   title: "titulo DATE 1"},
     { type : [ "R","DATE" ],           value : '09/12/1992',           varError : "fecha2",    id: "DATE 09/12/1992",   title: "titulo DATE 2"},
@@ -324,6 +332,17 @@ const DATA = [
     {
         type         : [ 'R', 'RFC', 'RFC_DATE' ],
         value        : 'XXXX920804XX1',       // value rfc
+        valueDate    : '04-08-1992',
+        titleRFC     : 'R.F.C.',              // title rfc
+        titleDate    : 'Fecha de nacimiento', // title Date
+        varError     : 'varErrorRFC',         // varError rfc
+        varErrorDate : 'varErrorDate',
+        id           : 'focusRFC',            //focusRFC
+        focusDate    : 'focusDate',
+    },
+    {
+        type         : [ 'R', 'RFC_GENERIC', 'RFC_DATE_GENERIC' ],
+        value        : 'XAXX010101000',       // value rfc
         valueDate    : '04-08-1992',
         titleRFC     : 'R.F.C.',              // title rfc
         titleDate    : 'Fecha de nacimiento', // title Date
