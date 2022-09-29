@@ -27,9 +27,10 @@ export const textNumberValidate = ( value = "", varError = "", id = "", title = 
 }
 
 export const rfcValidateGeneric = ( value = "", varError = "", id = "", title = "" ) => {
-    let result = { status: true }
+    let result = { status: true, isGeneric : true }
     if (isGenericRFC(value.toLowerCase())){
         result = rfcValidate(value, varError, id, title);
+        result.isGeneric = false;
     }
     return result;
 }
