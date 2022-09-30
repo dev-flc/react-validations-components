@@ -4,14 +4,14 @@ import { DATA } from './dumys.js'
 
 /*  Development */
 import {
-    rfcValidate, rfcValidateGeneric, rfcValidateIsGeneric, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    rfcValidate, rfcValidateGeneric, isGenericRFC, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, validationDateRFCGeneric, dateValidateFormat,
     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
  } from './../src/index.js';
 
 /* Production */
 /* import {
-    rfcValidate, rfcValidateGeneric, rfcValidateIsGeneric, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
+    rfcValidate, rfcValidateGeneric, isGenericRFC, rfcValidateClave, emailValidate, textValidate, numValidate, singleValidation, multiValidation, commonValidate,
     textNumberValidate, requiredData, comboValidate, radioButtonValidate, validationDateRFC, validationDateRFCGeneric, dateValidateFormat,
     validationCheckBox, textAreSpecialValidate, specialCharacterInValidate, curpValidate
 } from './../dist/index.js' */
@@ -23,7 +23,7 @@ export default () => {
     const [ textValue, setTextValue ]                                        = useState( 'Hola Mundo' );
     const [ textValueNumberValidate, setTextNumberValidate ]                 = useState( "ñáäéëíïóöúüÑÁÄÉËÍÏÓÖÚÜ" )
     const [ rfcValueValidate, setRfcValueValidate ]                          = useState( "XXXX920804XX1" )
-    const [ rfcValueValidateGeneric, setRfcValueValidateGeneric ]            = useState( "XAXX010101000" ) //-APM-
+    const [ rfcValueValidateGeneric, setRfcValueValidateGeneric ]            = useState( "XAXX010101000" )
     const [ rfcValueValidateIsGeneric, setRfcValueValidateIsGeneric ]        = useState( "XAXX010101000" ) //-APM2-
     const [ rfcValueValidateClave, setRfcValidateClave ]                     = useState( "XXXX920807" )
     const [ emailValueValidate, setEmailValidate ]                           = useState( "fer.l.c@gmail.com" )
@@ -86,9 +86,9 @@ export default () => {
             aplyParse     : false
         },
         {
-            nombreFuncion: `rfcValidateIsGeneric( "XAXX010101000" )`,
+            nombreFuncion: `isGenericRFC( "XAXX010101000" )`,
             value: rfcValueValidateIsGeneric,
-            funcion: rfcValidateIsGeneric,
+            funcion: isGenericRFC,
             hook: setRfcValueValidateIsGeneric,
             aplyParse: false
         },

@@ -6,7 +6,7 @@ import {
     textNumberValidate,
     rfcValidate,
     rfcValidateGeneric,
-    rfcValidateIsGeneric,
+    isGenericRFC,
     rfcValidateClave,
     emailValidate,
     commonValidate,
@@ -55,7 +55,7 @@ export const SWITCH_VALIDATIONS = data => {
             break;
 
         case "IS_RFC_GENERIC": // Regresa solo si es rfc generico
-            result = rfcValidateIsGeneric( value );
+            result = isGenericRFC( value, varError, id, title, title );
             break;
 
         case "RFC_CLAVE": // RFC sin cave

@@ -88,7 +88,7 @@ import {
     textNumberValidate,
     rfcValidate,
     rfcValidateGeneric,
-    rfcValidateIsGeneric,
+    isGenericRFC
     rfcValidateClave,
     emailValidate,
     commonValidate,
@@ -150,10 +150,10 @@ console.log("rfcValidateGeneric", rfcValidateGeneric( "XAXX010101000", "errorTex
 console.log("rfcValidateGeneric", rfcValidateGeneric( "XAXX010101000" ))
 // Result Successful = { status : true, isGeneric : true }
 
-console.log("rfcValidateIsGeneric", rfcValidateIsGeneric( "XAXX010101000" ))
+console.log("isGenericRFC", isGenericRFC( "XAXX010101000" ))
 // Result Successful = { status : true }
-console.log("rfcValidateIsGeneric", rfcValidateIsGeneric( "XAXX010101000" ))
-// Result Error =  { status : false }
+console.log("isGenericRFC", isGenericRFC( "XAXX010101000", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
+// Result Error =  { status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT' }
 
 console.log( "rfcValidate", rfcValidate( "XX920804", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
 // Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}
