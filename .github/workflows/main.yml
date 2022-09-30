@@ -1,0 +1,31 @@
+name: react-validations-components
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  publish-gpr:
+    name: 🚀 publish-react-validations-components
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: 📚 checkout
+        uses: actions/checkout@v2
+      - name: ✅ node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: "https://registry.npmjs.org"
+          scope: "@ferch01992"
+      - name: 📚 install-dependencies
+        run: npm install
+      - name: 🛠️ build-package
+        run: npm run build
+      - name: 📦 publish-package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.REACT_VALIDATIONS_COMPONENTS_TOKEN}}

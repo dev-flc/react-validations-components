@@ -1,6 +1,6 @@
 {
   "name": "react-validations-components",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "validation",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "VERSION_APP=$npm_package_version webpack-dev-server --progress  --config webpack.dev.js",
     "build": "VERSION_APP=$npm_package_version npm run clean && babel src -d dist --copy-files",
     "build:win": "SET VERSION_APP=%npm_package_version%& npm run clean && babel src -d dist --copy-files",
-    "clean": "rm -r dist && mkdir dist"
+    "clean": "rm -rf ./dist"
   },
   "repository": {
     "type": "git",
