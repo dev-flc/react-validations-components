@@ -6,6 +6,7 @@ import {
     textNumberValidate,
     rfcValidate,
     rfcValidateGeneric,
+    rfcValidateIsGeneric,
     rfcValidateClave,
     emailValidate,
     commonValidate,
@@ -26,9 +27,9 @@ export const SWITCH_VALIDATIONS = data => {
         titleDate, varErrorDate, focusDate, title } = data;
 
     let result = { status: false, error: "error" };
-    
+
     switch ( type ) {
-        
+
         case "R": // Requerido
             result = requiredData( value, varError, id, title );
             break;
@@ -48,9 +49,13 @@ export const SWITCH_VALIDATIONS = data => {
         case "RFC": // RFC
             result = rfcValidate( value, varError, id, title, title );
             break;
-            
+
         case "RFC_GENERIC": // RFC y validacion de RFC generico
             result = rfcValidateGeneric( value, varError, id, title, title );
+            break;
+
+        case "IS_RFC_GENERIC": // Regresa solo si es rfc generico
+            result = rfcValidateIsGeneric( value );
             break;
 
         case "RFC_CLAVE": // RFC sin cave

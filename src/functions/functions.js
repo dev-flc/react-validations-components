@@ -27,11 +27,15 @@ export const textNumberValidate = ( value = "", varError = "", id = "", title = 
 }
 
 export const rfcValidateGeneric = ( value = "", varError = "", id = "", title = "" ) => {
-    let result = { status: true, isGeneric : true }
+    let result = { status: true }
     if (isGenericRFC(value.toLowerCase())){
         result = rfcValidate(value, varError, id, title);
-        result.isGeneric = false;
     }
+    return result;
+}
+
+export const rfcValidateIsGeneric = ( value = "" ) => {
+    let result = { status: !isGenericRFC(value.toLowerCase()) }
     return result;
 }
 
@@ -133,7 +137,7 @@ const isGenericRFC = rfc => {
 
 export const validationDateRFCGeneric = ( rfc, date, titleRFC = "", titleDate = "", varErrorRFC = "", varErrorDate = "", focusRFC = "", focusDate = "" ) => {
     let result = { status : true }
-    if (isGenericRFC(rfc.toLowerCase())) {      
+    if (isGenericRFC(rfc.toLowerCase())) {
         result = validationDateRFC(rfc, date, titleRFC, titleDate, varErrorRFC, varErrorDate, focusRFC, focusDate )
     }
     return result

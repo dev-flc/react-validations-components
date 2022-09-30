@@ -35,6 +35,10 @@ export const DATA = [
         id           : 'focusRFC',            //focusRFC
         focusDate    : 'focusDate',
     },
+    {
+        type         : "IS_RFC_GENERIC",
+        value        : 'XAXX010101000'
+    },
     { type : ["R","CURP"],      value : 'PXDO560626MNELRN09',           varError : "curp",             id: "text_curp",         title: "titulo_curp"},
     { type : "COMMON", value : 'sd', expRegular : /^([a-zA-Z ñáéíóúÑÁÉÍÓÚ .,]{0,100})$/, varError : "common", id : "errorrorooror", message : 'wshbehfbwejf' }
 

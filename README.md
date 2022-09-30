@@ -63,10 +63,11 @@ To use, import the different functions exposed.
 | N                 | validation of type number               |
 | TN                | validation of type text and number      |
 | RFC               | validation of type RFC                  |
-| RFC_GENERIC       | validation of type RFC Generic          |-APM-
+| RFC_GENERIC       | validation of type RFC Generic          |
+| IS_RFC_GENERIC    | validation of type Is RFC Generic       |
 | RFC_CLAVE         | validation of type RFC                  |
 | RFC_DATE          | validation of type RFC and date         |
-| RFC_DATE_GENERIC  | validation of type RFC Generic and date |-APM-
+| RFC_DATE_GENERIC  | validation of type RFC Generic and date |
 | EMAIL             | validation of type email                |
 | COMMON            | validation of type common               |
 | C                 | validation of type combo                |
@@ -87,12 +88,13 @@ import {
     textNumberValidate,
     rfcValidate,
     rfcValidateGeneric,
+    rfcValidateIsGeneric,
     rfcValidateClave,
     emailValidate,
     commonValidate,
     requiredData,
     comboValidate,
-    radioButtonValidate,    
+    radioButtonValidate,
     dateValidateFormat,
     validationDateRFC,
     validationDateRFCGeneric,
@@ -147,6 +149,11 @@ console.log("rfcValidate", rfcValidate( "XXXX920804XX1" ))
 console.log("rfcValidateGeneric", rfcValidateGeneric( "XAXX010101000", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
 console.log("rfcValidateGeneric", rfcValidateGeneric( "XAXX010101000" ))
 // Result Successful = { status : true, isGeneric : true }
+
+console.log("rfcValidateIsGeneric", rfcValidateIsGeneric( "XAXX010101000" ))
+// Result Successful = { status : true }
+console.log("rfcValidateIsGeneric", rfcValidateIsGeneric( "XAXX010101000" ))
+// Result Error =  { status : false }
 
 console.log( "rfcValidate", rfcValidate( "XX920804", "errorText", "ID_COMPONENT", "TITLE_COMPO" ))
 // Result Error = {status: false, error: 'El dato TITLE_COMPO no es válido', varError: 'errorText', id: 'ID_COMPONENT'}

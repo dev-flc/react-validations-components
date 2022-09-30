@@ -5,6 +5,7 @@ export {
     textNumberValidate,
     rfcValidate,
     rfcValidateGeneric,
+    rfcValidateIsGeneric,
     rfcValidateClave,
     emailValidate,
     commonValidate,
