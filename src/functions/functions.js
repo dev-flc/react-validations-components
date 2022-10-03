@@ -28,7 +28,7 @@ export const textNumberValidate = ( value = "", varError = "", id = "", title = 
 
 export const rfcValidateGeneric = ( value = "", varError = "", id = "", title = "" ) => {
     let result = { status: true }
-    if (isGenericRFC(value.toLowerCase())){
+    if (!isGenericRFC(value).status){
         result = rfcValidate(value, varError, id, title);
     }
     return result;
@@ -126,13 +126,17 @@ const formatDateToRFC = date => {
 
 }
 
-const isGenericRFC = rfc => {
-    return  !(rfc === "xaxx010101000" || rfc === "xexx010101000" || rfc === "axaxx010101000" || rfc === "axexx010101000");
+export const isGenericRFC = ( value = {}, varError = "", id = "", title = "" ) => {
+    value = value.toLowerCase();
+    return  (value == "xaxx010101000" || value == "xexx010101000" || value == "axaxx010101000" || value == "axexx010101000" )
+    ? { status: true }
+    : { status: false, error : validaTitle( title, `El dato no es válido.`,
+    `El dato ${ title } no es válido.` ), varError, id }
 };
 
 export const validationDateRFCGeneric = ( rfc, date, titleRFC = "", titleDate = "", varErrorRFC = "", varErrorDate = "", focusRFC = "", focusDate = "" ) => {
     let result = { status : true }
-    if (isGenericRFC(rfc.toLowerCase())) {      
+    if (!isGenericRFC(rfc).status) {
         result = validationDateRFC(rfc, date, titleRFC, titleDate, varErrorRFC, varErrorDate, focusRFC, focusDate )
     }
     return result
